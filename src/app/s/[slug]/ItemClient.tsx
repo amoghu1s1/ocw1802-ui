@@ -97,8 +97,8 @@ export default function ItemClient({ slug }: { slug: string }) {
   const lectureDone = clips.length > 0 && clips.every(clipWatched);
   const recitationDone = !!recitation && clipWatched(recitation);
 
-  /* documents: OCW labels video transcript PDFs "English" — not worth listing twice */
-  const docs = entry.pdfs.filter((p) => !/^english$/i.test(p.title.trim()));
+  /* documents: OCW labels video transcript PDFs "English (PDF)" — not worth listing twice */
+  const docs = entry.pdfs.filter((p) => !/^english(\s*\(pdf\))?$/i.test(p.title.trim()));
   const readingDocs = docs.filter((p) => ["reading", "exam", "exam-solutions", "other"].includes(p.kind));
   const practiceDocs = docs.filter((p) => !readingDocs.includes(p));
 
