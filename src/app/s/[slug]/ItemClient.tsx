@@ -313,7 +313,7 @@ function ProblemsTab({
   const url = (mode === "solutions" && solutionsPdf ? solutionsPdf : problemPdf) ?? null;
   return (
     <div className="space-y-2">
-      {quiz && <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} layout={pdfs.length ? "narrow" : "wide"} />}
+      {quiz && <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} layout={problemPdf || solutionsPdf ? "narrow" : "wide"} />}
       {solutionsPdf && problemPdf && (
         <div className="flex items-center gap-1.5">
           <button
@@ -335,6 +335,7 @@ function ProblemsTab({
         </div>
       )}
       {url && <PdfViewer url={url} heightClass="h-[440px]" />}
+      {!url && pdfs.length > 0 && <PdfTab pdfs={pdfs} />}
     </div>
   );
 }
