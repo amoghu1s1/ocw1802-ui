@@ -3,21 +3,29 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { course, entryProgress, getAdjacent, getEntry, isEntryComplete } from "@/lib/course";
+import { course, getAdjacent, getEntry, isEntryComplete } from "@/lib/course";
 import { addBookmark, removeBookmark, useBookmarks } from "@/lib/bookmarks";
 import { setCompleted, useProgress } from "@/lib/progress";
 import { clipLines, hasTranscript } from "@/lib/transcripts";
 import { getQuiz } from "@/lib/quiz";
+import { useNoteDoc } from "@/lib/notes";
 import { YouTubePlaylist } from "@/components/YouTubePlaylist";
 import { TranscriptPanel } from "@/components/TranscriptPanel";
 import { PdfViewer } from "@/components/PdfViewer";
 import { BoardGallery } from "@/components/BoardGallery";
 import { NotesPanel } from "@/components/NotesPanel";
 import { QuizPanel } from "@/components/QuizPanel";
+import { StepSection, StepNav, TranscriptToggle } from "@/components/StepSection";
 import CommandPalette from "@/components/CommandPalette";
 import type { Bookmark, Clip, PdfRef, Quiz } from "@/lib/types";
 
-type Tab = "transcript" | "pdfs" | "problems" | "notes";
+interface StepDef {
+  id: string;
+  title: string;
+  meta?: string;
+  done?: boolean;
+  body: React.ReactNode;
+}
 
 export default function ItemClient({ slug }: { slug: string }) {
   const sp = useSearchParams();
@@ -26,18 +34,21 @@ export default function ItemClient({ slug }: { slug: string }) {
   const { prev, next } = getAdjacent(slug);
   const bookmarks = useBookmarks(slug);
   const quiz = useMemo(() => getQuiz(slug), [slug]);
+  const { doc: notesDoc } = useNoteDoc(slug);
 
   const [pos, setPos] = useState({ clipIdx: 0, t: 0 });
   const [seek, setSeek] = useState<{ clipIdx: number; t: number; seq: number } | null>(null);
-  const [tab, setTab] = useState<Tab>("transcript");
+  const [recPos, setRecPos] = useState(0);
+  const [recSeek, setRecSeek] = useState<{ clipIdx: number; t: number; seq: number } | null>(null);
+  const [showLectureTx, setShowLectureTx] = useState(false);
+  const [showRecTx, setShowRecTx] = useState(false);
   const deepApplied = useRef(false);
 
-  const clips: Clip[] = useMemo(() => {
-    if (!data) return [];
-    const out: Clip[] = data.entry.clips.map((c) => ({ ...c }));
-    if (data.entry.recitation) out.push({ ...data.entry.recitation, isRecitation: true });
-    return out;
-  }, [data]);
+  const clips: Clip[] = useMemo(() => (data ? data.entry.clips.map((c) => ({ ...c })) : []), [data]);
+  const recitation: Clip | null = useMemo(
+    () => (data?.entry.recitation ? { ...data.entry.recitation, isRecitation: true } : null),
+    [data],
+  );
 
   const deepT = sp?.get("t");
   const deepC = sp?.get("c");
@@ -69,25 +80,148 @@ export default function ItemClient({ slug }: { slug: string }) {
   const { unit, part, entry } = data;
   const unitIdx = course.units.indexOf(unit) + 1;
   const done = isEntryComplete(slug, progress, entry);
-  const transcriptClipIdx = clips.findIndex((c) => hasTranscript(c.ytId));
+
   const currentClip = clips[pos.clipIdx];
-  const lines = currentClip && hasTranscript(currentClip.ytId) ? clipLines(currentClip) : [];
+  const lectureLines = currentClip && hasTranscript(currentClip.ytId) ? clipLines(currentClip.ytId) : [];
+  const recLines = recitation && hasTranscript(recitation.ytId) ? clipLines(recitation.ytId) : [];
 
   const doSeek = (clipIdx: number, t: number) => {
     setPos((p) => (p.clipIdx === clipIdx ? p : { clipIdx, t: 0 }));
     setSeek({ clipIdx, t, seq: Date.now() });
   };
 
+  const clipWatched = (c: Clip) => {
+    const cp = progress[slug]?.clips[`${c.ytId}:${c.start}`];
+    return !!cp?.dur && cp.dur > 0 && cp.pos / cp.dur >= 0.95;
+  };
+  const lectureDone = clips.length > 0 && clips.every(clipWatched);
+  const recitationDone = !!recitation && clipWatched(recitation);
+
+  /* documents: OCW labels video transcript PDFs "English" — not worth listing twice */
+  const docs = entry.pdfs.filter((p) => !/^english$/i.test(p.title.trim()));
+  const readingDocs = docs.filter((p) => ["reading", "exam", "exam-solutions", "other"].includes(p.kind));
+  const practiceDocs = docs.filter((p) => !readingDocs.includes(p));
+
   const problemPdf = entry.pdfs.find((p) => p.kind === "problems")?.localPath ?? entry.pdfs.find((p) => p.kind === "exam" || p.kind === "practice")?.localPath ?? null;
   const solutionsPdf = entry.pdfs.find((p) => p.kind === "solutions" || p.kind === "exam-solutions" || p.kind === "practice-solutions")?.localPath ?? null;
-  const tabs: [Tab, string][] = [
-    ...(transcriptClipIdx >= 0 ? ([["transcript", "Transcript"]] as [Tab, string][]) : []),
-    ...(entry.pdfs.length ? ([["pdfs", "Documents"]] as [Tab, string][]) : []),
-    ...(problemPdf || quiz ? ([["problems", "Practice"]] as [Tab, string][]) : []),
-    ["notes", "Notes"] as [Tab, string],
-  ];
 
+  const quizResults = progress[slug]?.quiz ?? {};
+  const quizCorrect = quiz ? quiz.problems.filter((p) => quizResults[p.id] === "correct" || quizResults[p.id] === "self-correct").length : 0;
+  const quizDone = !!quiz && quiz.problems.length > 0 && quizCorrect === quiz.problems.length;
+
+  const notesCount = notesDoc.items.length;
   const isVideoPage = clips.length > 0;
+
+  const steps: StepDef[] = [];
+
+  if (isVideoPage) {
+    steps.push({
+      id: "watch",
+      title: "Watch the lecture",
+      meta: clips.length === 1 ? "1 video clip" : `${clips.length} video clips`,
+      done: lectureDone,
+      body: (
+        <div className="space-y-3">
+          <YouTubePlaylist
+            slug={slug}
+            clips={clips}
+            bookmarks={bookmarks}
+            onAddBookmark={(bm) => addBookmark(slug, bm)}
+            onRemoveBookmark={(ts) => removeBookmark(slug, ts)}
+            onTimeUpdate={(c, t) => setPos({ clipIdx: c, t })}
+            onSeekRequest={doSeek}
+            seekTo={seek}
+          />
+          {lectureLines.length > 0 && (
+            <TranscriptToggle open={showLectureTx} onToggle={() => setShowLectureTx((v) => !v)}>
+              <TranscriptPanel lines={lectureLines} currentTime={pos.t} onSeek={(t) => doSeek(pos.clipIdx, t)} />
+            </TranscriptToggle>
+          )}
+        </div>
+      ),
+    });
+  }
+
+  if (entry.boards.length > 0) {
+    steps.push({
+      id: "boards",
+      title: "Review the board notes",
+      meta: `${entry.boards.length} board${entry.boards.length === 1 ? "" : "s"}`,
+      body: <BoardGallery boards={entry.boards} />,
+    });
+  }
+
+  if (readingDocs.length > 0) {
+    steps.push({
+      id: "reading",
+      title: isVideoPage ? "Read the notes & examples" : "Read the materials",
+      meta: `${readingDocs.length} PDF${readingDocs.length === 1 ? "" : "s"}`,
+      body: <PdfTab pdfs={readingDocs} wide />,
+    });
+  }
+
+  if (recitation) {
+    steps.push({
+      id: "recitation",
+      title: "Watch the recitation",
+      meta: "1 video clip",
+      done: recitationDone,
+      body: (
+        <div className="space-y-3">
+          <YouTubePlaylist
+            slug={slug}
+            clips={[recitation]}
+            bookmarks={bookmarks}
+            onAddBookmark={(bm) => addBookmark(slug, bm)}
+            onRemoveBookmark={(ts) => removeBookmark(slug, ts)}
+            onTimeUpdate={(_, t) => setRecPos(t)}
+            onSeekRequest={(_, t) => setRecSeek({ clipIdx: 0, t, seq: Date.now() })}
+            seekTo={recSeek}
+          />
+          {recLines.length > 0 && (
+            <TranscriptToggle open={showRecTx} onToggle={() => setShowRecTx((v) => !v)} label="recitation transcript">
+              <TranscriptPanel lines={recLines} currentTime={recPos} onSeek={(t) => setRecSeek({ clipIdx: 0, t, seq: Date.now() })} />
+            </TranscriptToggle>
+          )}
+        </div>
+      ),
+    });
+  }
+
+  if (isVideoPage && (quiz || practiceDocs.length > 0)) {
+    steps.push({
+      id: "practice",
+      title: "Work the problems",
+      meta: quiz ? `${quizCorrect}/${quiz.problems.length} correct` : `${practiceDocs.length} PDF${practiceDocs.length === 1 ? "" : "s"}`,
+      done: quiz ? quizDone : undefined,
+      body: <ProblemsTab slug={slug} problemPdf={problemPdf} solutionsPdf={solutionsPdf} quiz={quiz} pdfs={practiceDocs} />,
+    });
+  }
+
+  if (!isVideoPage) {
+    steps.push({
+      id: "practice",
+      title: entry.kind === "problem-set" ? "Work the problem set" : "Review the exam",
+      meta: quiz ? `${quizCorrect}/${quiz.problems.length} correct` : `${entry.pdfs.length} PDF${entry.pdfs.length === 1 ? "" : "s"}`,
+      done: quiz ? quizDone : undefined,
+      body: quiz ? (
+        <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} />
+      ) : entry.pdfs.length ? (
+        <PdfTab pdfs={entry.pdfs} wide />
+      ) : (
+        <p className="text-xs text-text-faint">No materials on this page.</p>
+      ),
+    });
+  }
+
+  steps.push({
+    id: "notes",
+    title: "Write your notes",
+    meta: notesCount > 0 ? `${notesCount} note${notesCount === 1 ? "" : "s"}` : undefined,
+    body: <NotesPanel slug={slug} currentTime={isVideoPage ? pos.t : null} onSeek={isVideoPage ? (t) => doSeek(pos.clipIdx, t) : undefined} />,
+  });
+
+  const navItems = steps.map((s) => ({ id: s.id, label: s.title, meta: s.meta, done: !!s.done }));
 
   return (
     <div className="min-h-screen bg-bg text-text">
@@ -125,93 +259,36 @@ export default function ItemClient({ slug }: { slug: string }) {
         </button>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-6">
-        {isVideoPage ? (
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="flex-1 min-w-0 flex flex-col gap-5">
-              <div>
-                <nav className="text-[10px] font-mono text-text-faint mb-1.5" aria-label="Breadcrumb">
-                  <Link href="/" className="hover:text-text-dim">
-                    {unit.shortTitle}
-                  </Link>{" "}
-                  · {part.shortTitle}
-                </nav>
-                <h1 className="text-2xl font-bold text-text tracking-tight">
-                  {entry.number != null && <span className="text-accent font-mono mr-2">{entry.number}.</span>}
-                  {entry.title}
-                </h1>
-                {entry.summary && <p className="text-xs text-text-dim leading-relaxed mt-2 border-l-2 border-border pl-3">{entry.summary}</p>}
-              </div>
-
-              <YouTubePlaylist
-                slug={slug}
-                clips={clips}
-                bookmarks={bookmarks}
-                onAddBookmark={(bm) => addBookmark(slug, bm)}
-                onRemoveBookmark={(ts) => removeBookmark(slug, ts)}
-                onTimeUpdate={(c, t) => setPos({ clipIdx: c, t })}
-                onSeekRequest={doSeek}
-                seekTo={seek}
-              />
-
-              <BoardGallery boards={entry.boards} />
-
-              <PrevNext prev={prev} next={next} />
-            </div>
-
-            <div className="w-full lg:w-96 shrink-0">
-              <div className="flex border-b border-border mb-3">
-                {tabs.map(([id, label]) => (
-                  <button
-                    key={id}
-                    type="button"
-                    onClick={() => setTab(id)}
-                    className={`flex-1 px-2 py-2 text-[10px] font-semibold uppercase tracking-wider transition-colors border-b-2 ${
-                      tab === id ? "text-text border-accent" : "text-text-faint border-transparent hover:text-text-dim"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              {tab === "transcript" && <TranscriptPanel lines={lines} currentTime={pos.t} onSeek={(t) => doSeek(pos.clipIdx, t)} />}
-              {tab === "pdfs" && <PdfTab pdfs={entry.pdfs} />}
-              {tab === "problems" && <ProblemsTab slug={slug} problemPdf={problemPdf} solutionsPdf={solutionsPdf} quiz={quiz} />}
-              {tab === "notes" && <NotesPanel slug={slug} currentTime={pos.t} onSeek={(t) => doSeek(pos.clipIdx, t)} />}
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-5">
-            <div>
+      <main className="max-w-6xl mx-auto px-6 py-6">
+        <div className="grid xl:grid-cols-[minmax(0,1fr)_256px] gap-6 items-start">
+          <div className="order-2 xl:order-1 min-w-0">
+            <div className="mb-5">
               <nav className="text-[10px] font-mono text-text-faint mb-1.5" aria-label="Breadcrumb">
                 <Link href="/" className="hover:text-text-dim">
                   {unit.shortTitle}
                 </Link>{" "}
                 · {part.shortTitle}
               </nav>
-              <h1 className="text-2xl font-bold text-text tracking-tight">{entry.title}</h1>
+              <h1 className="text-2xl font-bold text-text tracking-tight">
+                {entry.number != null && <span className="text-accent font-mono mr-2">{entry.number}.</span>}
+                {entry.title}
+              </h1>
               {entry.summary && <p className="text-xs text-text-dim leading-relaxed mt-2 border-l-2 border-border pl-3">{entry.summary}</p>}
             </div>
 
-            <div className="grid xl:grid-cols-[1fr_360px] gap-5 items-start">
-              <div className="min-w-0">
-                {quiz ? (
-                  <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} />
-                ) : entry.pdfs.length ? (
-                  <PdfTab pdfs={entry.pdfs} wide />
-                ) : (
-                  <p className="text-xs text-text-faint">No materials on this page.</p>
-                )}
-              </div>
-              <div>
-                <NotesPanel slug={slug} currentTime={null} />
-              </div>
-            </div>
+            {steps.map((s, i) => (
+              <StepSection key={s.id} id={s.id} n={i + 1} title={s.title} hint={s.meta} done={!!s.done}>
+                {s.body}
+              </StepSection>
+            ))}
 
             <PrevNext prev={prev} next={next} />
           </div>
-        )}
+
+          <aside className="order-1 xl:order-2 w-full xl:sticky xl:top-20">
+            <StepNav items={navItems} />
+          </aside>
+        </div>
       </main>
 
       <CommandPalette />
@@ -219,12 +296,24 @@ export default function ItemClient({ slug }: { slug: string }) {
   );
 }
 
-function ProblemsTab({ slug, problemPdf, solutionsPdf, quiz }: { slug: string; problemPdf: string | null; solutionsPdf: string | null; quiz: Quiz | null }) {
+function ProblemsTab({
+  slug,
+  problemPdf,
+  solutionsPdf,
+  quiz,
+  pdfs,
+}: {
+  slug: string;
+  problemPdf: string | null;
+  solutionsPdf: string | null;
+  quiz: Quiz | null;
+  pdfs: PdfRef[];
+}) {
   const [mode, setMode] = useState<"problems" | "solutions">("problems");
   const url = (mode === "solutions" && solutionsPdf ? solutionsPdf : problemPdf) ?? null;
   return (
     <div className="space-y-2">
-      {quiz && <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} layout="narrow" />}
+      {quiz && <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} layout={pdfs.length ? "narrow" : "wide"} />}
       {solutionsPdf && problemPdf && (
         <div className="flex items-center gap-1.5">
           <button
@@ -276,7 +365,7 @@ function PdfTab({ pdfs, wide = false }: { pdfs: PdfRef[]; wide?: boolean }) {
 
 function PrevNext({ prev, next }: { prev: { slug: string; title: string } | null; next: { slug: string; title: string } | null }) {
   return (
-    <div className="flex items-center justify-between gap-3 pt-2 border-t border-border">
+    <div className="flex items-center justify-between gap-3 pt-4 border-t border-border">
       {prev ? (
         <Link href={`/s/${prev.slug}`} className="flex flex-col gap-0.5 p-3 bg-surface border border-border rounded-[8px] hover:border-text-dim transition-colors group max-w-[48%]">
           <span className="text-[10px] uppercase font-mono text-text-faint group-hover:text-text-dim">← Previous</span>

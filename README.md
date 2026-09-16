@@ -4,6 +4,7 @@ A personal, offline-first dashboard for [MIT OCW 18.02SC Multivariable Calculus]
 
 ## Features
 
+- **Step-by-step sessions** — each session page is an OCW-style progression (lecture → board notes → reading → recitation → problems → notes) with a completion rail
 - **Playlist player** — sessions play their lecture clips in sequence with auto-advance, clip outline, and resume
 - **Time-synced transcripts** (from OCW's caption files), click-to-seek, searchable
 - **Board notes gallery** with lightbox
