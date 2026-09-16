@@ -26,7 +26,7 @@ export default function Sidebar({ isMobile = false, onClose }: { isMobile?: bool
         <button
           type="button"
           onClick={toggle}
-          className="absolute top-4 -right-3 z-40 w-6 h-6 bg-surface border border-border rounded-full flex items-center justify-center hover:bg-surface-2 transition-colors cursor-pointer hidden lg:flex"
+          className="absolute top-4 -right-3 z-40 w-6 h-6 bg-surface border border-border rounded-full flex items-center justify-center hover:bg-surface-2 transition-colors cursor-pointer hidden md:flex"
           aria-label={eff ? "Expand sidebar" : "Collapse sidebar"}
           aria-expanded={!eff}
         >

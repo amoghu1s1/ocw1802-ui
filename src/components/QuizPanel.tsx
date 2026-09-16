@@ -53,7 +53,7 @@ export function QuizPanel({ slug, problems, problemPdf, solutionsPdf, layout = "
   return (
     <div className={gridCls}>
       {/* left: problem list + answer area */}
-      <div className="space-y-3">
+      <div className="space-y-3 min-w-0">
         <div className="bg-surface border border-border rounded-[8px] p-3">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-[10px] uppercase tracking-wider font-semibold text-text-faint">Problems</h3>
@@ -168,7 +168,7 @@ export function QuizPanel({ slug, problems, problemPdf, solutionsPdf, layout = "
       </div>
 
       {/* right: pdf */}
-      {layout === "wide" && <div>{pdfUrl ? <PdfViewer url={pdfUrl} heightClass="h-[720px]" /> : <div className="text-xs text-text-faint">No PDF for this page.</div>}</div>}
+      {layout === "wide" && <div className="min-w-0">{pdfUrl ? <PdfViewer url={pdfUrl} heightClass="h-[720px]" /> : <div className="text-xs text-text-faint">No PDF for this page.</div>}</div>}
     </div>
   );
 }

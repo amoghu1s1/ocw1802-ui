@@ -82,8 +82,8 @@ export default function ItemClient({ slug }: { slug: string }) {
   const done = isEntryComplete(slug, progress, entry);
 
   const currentClip = clips[pos.clipIdx];
-  const lectureLines = currentClip && hasTranscript(currentClip.ytId) ? clipLines(currentClip.ytId) : [];
-  const recLines = recitation && hasTranscript(recitation.ytId) ? clipLines(recitation.ytId) : [];
+  const lectureLines = currentClip && hasTranscript(currentClip.ytId) ? clipLines(currentClip) : [];
+  const recLines = recitation && hasTranscript(recitation.ytId) ? clipLines(recitation) : [];
 
   const doSeek = (clipIdx: number, t: number) => {
     setPos((p) => (p.clipIdx === clipIdx ? p : { clipIdx, t: 0 }));

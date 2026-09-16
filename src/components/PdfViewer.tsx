@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 const Document = dynamic(() => import("react-pdf").then((m) => m.Document), { ssr: false });
@@ -17,6 +17,19 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
   const [ready, setReady] = useState(false);
   const [scale, setScale] = useState(1);
   const [error, setError] = useState<string | null>(null);
+  const [wrapW, setWrapW] = useState(0);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width ?? 0;
+      if (w > 0) setWrapW(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -68,7 +81,7 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
           </a>
         </div>
       </div>
-      <div className="flex-1 overflow-auto bg-surface-2/40 p-2">
+      <div ref={wrapRef} className="flex-1 min-w-0 overflow-auto bg-surface-2/40 p-2">
         <Document
           file={url}
           onLoadSuccess={({ numPages: n }: { numPages: number }) => {
@@ -82,7 +95,7 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
         >
           <Page
             pageNumber={page}
-            scale={scale}
+            width={wrapW > 0 ? Math.max(240, Math.min(wrapW - 18, 612)) * scale : undefined}
             renderTextLayer={false}
             renderAnnotationLayer={false}
             className="bg-white shadow-md"

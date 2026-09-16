@@ -9,13 +9,13 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
   return (
     <div className="flex min-h-screen">
       {/* Desktop sidebar */}
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <Sidebar />
       </div>
 
       {/* Mobile drawer */}
       {openMobile && (
-        <div className="lg:hidden fixed inset-0 z-40 flex">
+        <div className="md:hidden fixed inset-0 z-40 flex">
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpenMobile(false)} aria-hidden />
           <div className="relative z-50 w-72 max-w-[80vw] h-screen">
             <Sidebar isMobile onClose={() => setOpenMobile(false)} />
@@ -24,7 +24,7 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
       )}
 
       {/* Mobile top bar */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-30 bg-surface border-b border-border h-14 flex items-center gap-3 px-3">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-30 bg-surface border-b border-border h-14 flex items-center gap-3 px-3">
         <button
           type="button"
           onClick={() => setOpenMobile(true)}
@@ -39,7 +39,7 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
         <span className="text-xs text-text-faint hidden sm:inline">Multivariable Calculus</span>
       </div>
 
-      <main className={`flex-1 min-h-screen transition-all duration-300 ease-in-out pt-14 lg:pt-0 ${collapsed ? "lg:ml-16" : "lg:ml-72"}`}>
+      <main className={`flex-1 min-w-0 min-h-screen transition-all duration-300 ease-in-out pt-14 md:pt-0 ${collapsed ? "md:ml-16" : "md:ml-72"}`}>
         {children}
       </main>
     </div>

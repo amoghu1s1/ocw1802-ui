@@ -23,7 +23,7 @@ export default function ThemeSwitcher() {
         title="Theme settings"
       />
       {open && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-surface-2 border border-border rounded-[8px] shadow-palette z-50 overflow-hidden" style={{ width: "200px" }}>
+        <div className="absolute bottom-full left-0 mb-2 bg-surface-2 border border-border rounded-[8px] shadow-palette z-50 overflow-hidden w-[200px] max-w-[80vw]">
           <div className="flex border-b border-border">
             <button onClick={() => setTab("accent")} className={tabClass(tab === "accent")}>Accent</button>
             <button onClick={() => setTab("theme")} className={tabClass(tab === "theme")}>Theme</button>
