@@ -1,0 +1,83 @@
+{
+  "problem-set-3": {
+    "problems": [
+      {
+        "id": "ps3-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "A disk of radius 2 rolls to the right at unit speed; $P$ starts 1 unit above the center. Which vector-parametric equation gives $\\overrightarrow{OP}(t)$?",
+        "options": [
+          "$(t-\\sin(t/2),\\; 2-\\cos(t/2))$",
+          "$(t-2\\sin t,\\; 2-2\\cos t)$",
+          "$(t+\\sin(t/2),\\; 2+\\cos(t/2))$",
+          "$(t-\\sin t,\\; 2-\\cos t)$"
+        ],
+        "answer": 0,
+        "solution": "Center: $(t,2)$. Rolling without slipping gives $t = 2\\theta$, so $\\theta = t/2$ clockwise from vertical. Add the radius vector from the center to $P$: $(-\\sin(t/2), -\\cos(t/2))$. So $\\overrightarrow{OP}(t) = (t - \\sin(t/2),\\; 2 - \\cos(t/2))$."
+      },
+      {
+        "id": "ps3-1c",
+        "label": "1c",
+        "type": "self",
+        "prompt": "Describe the shape of the curve $C$ traced by $P$ (compare with your sketch and the mathlet trace).",
+        "solution": "An elongated periodic wave — a curtate trochoid. $P$ sits inside the rim, so the curve has no cusps and never touches the x-axis: it dips to height $1$ and rises to height $3$ while the center moves steadily right."
+      },
+      {
+        "id": "ps3-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "Which parametrization gives the unit circle centered at the origin in the plane $x + 2y + z = 0$?",
+        "options": [
+          "$r(t) = \\frac{1}{\\sqrt{3}}(1,-1,1)\\cos t + \\frac{1}{\\sqrt{2}}(-1,0,1)\\sin t$",
+          "$r(t) = (1,0,0)\\cos t + (0,1,0)\\sin t$",
+          "$r(t) = \\frac{1}{\\sqrt{3}}(1,2,1)\\cos t + \\frac{1}{\\sqrt{2}}(-1,0,1)\\sin t$",
+          "$r(t) = \\frac{1}{\\sqrt{6}}(1,2,1)\\cos t + \\frac{1}{\\sqrt{2}}(1,0,-1)\\sin t$"
+        ],
+        "answer": 0,
+        "solution": "Use $r = u\\cos t + v\\sin t$ with unit, orthogonal $u, v$ that are both $\\perp n = (1,2,1)$. Take $u = \\frac{1}{\\sqrt{3}}(1,-1,1)$ and $v = \\frac{1}{\\sqrt{2}}(-1,0,1)$, parallel to $u_1 \\times n$ with $u_1 = (1,-1,1)$."
+      },
+      {
+        "id": "ps3-3a",
+        "label": "3a",
+        "type": "mc",
+        "prompt": "Which equations describe all lines through the origin that lie in the plane $x + 2y + z = 0$?",
+        "options": [
+          "$x = at,\\; y = bt,\\; z = (-a-2b)t$",
+          "$x = at,\\; y = bt,\\; z = (a+2b)t$",
+          "$x = at,\\; y = bt,\\; z = -(a+b)t$",
+          "$x = at,\\; y = bt,\\; z = (-2a-b)t$"
+        ],
+        "answer": 0,
+        "solution": "A direction vector $(a,b,c)$ must satisfy $a + 2b + c = 0$, so $c = -a - 2b$. With the separate case $b = 0$ (the line $x = t,\\,y = 0,\\,z = -t$), dividing by $b$ gives the one-parameter family $x = \\alpha t,\\; y = t,\\; z = -(\\alpha + 2)t$ with $\\alpha = a/b$."
+      },
+      {
+        "id": "ps3-3b",
+        "label": "3b",
+        "type": "self",
+        "prompt": "Give a geometric description of this family of lines, and explain why one parameter suffices.",
+        "solution": "The lines through $O$ whose direction vectors lie in $P$ — i.e. all lines through $O$ contained in $P$. Unit direction vectors of such lines trace the unit circle in $P$, a 1-dimensional set; that matches the single parameter $\\alpha = a/b$."
+      },
+      {
+        "id": "ps3-4b",
+        "label": "4b",
+        "type": "self",
+        "prompt": "Light at $(0,0,4)$ projects the curve $(\\cos t, \\sin t, 2)$ onto the tilted plane $my + z = 0$. Derive $r_\\alpha(t)$, the vector-parametric equation of the shadow.",
+        "solution": "The ray from $(0,0,4)$ through $(\\cos t, \\sin t, 2)$ is $(0,0,4) + u(\\cos t, \\sin t, -2)$. Substituting into $my + z = 0$ gives $mu\\sin t + 4 - 2u = 0$, so $u = \\frac{4}{2 - m\\sin t}$. Therefore $r_\\alpha(t) = \\frac{4\\cos t}{2-m\\sin t}\\,i + \\frac{4\\sin t}{2-m\\sin t}\\,j - \\frac{4m\\sin t}{2-m\\sin t}\\,k$."
+      },
+      {
+        "id": "ps3-4c",
+        "label": "4c",
+        "type": "mc",
+        "prompt": "Comparing $r_\\alpha(t)$ with the enlarged circle $r_0(t) = (2\\cos t,\\, 2\\sin t,\\, 0)$, at which corner point $t$ is the distortion largest (for small $\\alpha > 0$)?",
+        "options": [
+          "$t = \\pi/2$, with $|r_\\alpha - r_0| = \\frac{2\\sqrt{5}\\,m}{2-m}$",
+          "$t = 3\\pi/2$, with $|r_\\alpha - r_0| = \\frac{2\\sqrt{5}\\,m}{2+m}$",
+          "$t = 0$, with $|r_\\alpha - r_0| = \\frac{4m}{2-m}$",
+          "$t = \\pi$, with $|r_\\alpha - r_0| = \\frac{2\\sqrt{5}\\,m}{2+m}$"
+        ],
+        "answer": 0,
+        "solution": "The difference satisfies $|r_\\alpha - r_0| = \\frac{2\\sqrt{5}\\,m\\,|\\sin t|}{|2 - m\\sin t|}$. At $t = 0, \\pi$ this is $0$; at $t = \\pi/2$ it is $\\frac{2\\sqrt{5}\\,m}{2-m}$; at $t = 3\\pi/2$, $\\frac{2\\sqrt{5}\\,m}{2+m}$. The largest is at $t = \\pi/2$."
+      }
+    ]
+  }
+}
