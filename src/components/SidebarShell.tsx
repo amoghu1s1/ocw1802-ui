@@ -35,7 +35,7 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <span className="font-mono font-bold text-text tracking-tight">18.02SC</span>
+        <span className="font-display text-lg text-text tracking-tight">18.02SC</span>
         <span className="text-xs text-text-faint hidden sm:inline">Multivariable Calculus</span>
       </div>
 

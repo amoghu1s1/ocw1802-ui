@@ -14,11 +14,11 @@ export const ACCENT_COLORS = [
 ] as const;
 
 export const THEMES = [
-  { name: "Default Dark", bg: "#0a0a0a", surface: "#141414", surface2: "#1c1c1c", border: "#262626", text: "#e5e5e5", textDim: "#a3a3a3", textFaint: "#525252" },
-  { name: "Dracula", bg: "#282a36", surface: "#21222c", surface2: "#2d2f3d", border: "#44475a", text: "#f8f8f2", textDim: "#bfbfbf", textFaint: "#6272a4" },
-  { name: "Atomic Dark", bg: "#1b1d1e", surface: "#232526", surface2: "#2c2d2e", border: "#3c3d3e", text: "#c5c8c6", textDim: "#9da0a0", textFaint: "#505354" },
-  { name: "Nord", bg: "#2e3440", surface: "#2e3440", surface2: "#3b4252", border: "#434c5e", text: "#eceff4", textDim: "#d8dee9", textFaint: "#4c566a" },
-  { name: "Tokyo Night", bg: "#1a1b26", surface: "#1f2335", surface2: "#24283b", border: "#292e42", text: "#c0caf5", textDim: "#9aa5ce", textFaint: "#565f89" },
+  { name: "Default Dark", bg: "#0a0a0a", surface: "#141414", surface2: "#1c1c1c", border: "#262626", text: "#ececec", textDim: "#b8b8b8", textFaint: "#868686" },
+  { name: "Dracula", bg: "#282a36", surface: "#21222c", surface2: "#2d2f3d", border: "#44475a", text: "#f8f8f2", textDim: "#c8ccd8", textFaint: "#8f98b3" },
+  { name: "Atomic Dark", bg: "#1b1d1e", surface: "#232526", surface2: "#2c2d2e", border: "#3c3d3e", text: "#d8dbd9", textDim: "#aeb3b1", textFaint: "#878d8b" },
+  { name: "Nord", bg: "#2e3440", surface: "#343b4b", surface2: "#3b4252", border: "#434c5e", text: "#eceff4", textDim: "#c3cad6", textFaint: "#8d97a8" },
+  { name: "Tokyo Night", bg: "#1a1b26", surface: "#1f2335", surface2: "#24283b", border: "#292e42", text: "#c8d3f5", textDim: "#aab9e9", textFaint: "#8590b5" },
 ] as const;
 
 export type AccentColor = (typeof ACCENT_COLORS)[number]["name"];

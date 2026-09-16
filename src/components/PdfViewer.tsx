@@ -21,6 +21,7 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ready) return;
     const el = wrapRef.current;
     if (!el) return;
     const ro = new ResizeObserver((entries) => {
@@ -29,7 +30,7 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
     });
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,34 +50,39 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
     setError(null);
   }, [url]);
 
-  if (!ready)
-    return <div className="p-4 text-xs text-text-dim border border-border bg-surface rounded-[8px] animate-pulse">Loading PDF viewer…</div>;
+  if (!ready) return <div className={`${heightClass} rounded-[10px] border border-border/70 bg-surface`} />;
 
   return (
-    <div className={`flex flex-col ${heightClass} bg-surface border border-border rounded-[8px] overflow-hidden`}>
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border bg-surface-2 shrink-0 gap-2">
+    <div className={`flex flex-col ${heightClass} min-w-0 rounded-[10px] border border-border/70 bg-surface overflow-hidden`}>
+      <div className="flex items-center justify-between px-2.5 py-1.5 border-b border-border/60 shrink-0 gap-2">
         <span className="text-xs text-text-dim truncate">
-          {error ? <span className="text-red-400">{error}</span> : numPages ? `Page ${page} of ${numPages}` : "Loading PDF…"}
+          {error ? (
+            <span className="text-red-400/90">{error}</span>
+          ) : numPages ? (
+            <>
+              Page <span className="font-mono">{page}</span> of <span className="font-mono">{numPages}</span>
+            </>
+          ) : (
+            "Loading"
+          )}
         </span>
-        <div className="flex items-center gap-1.5 shrink-0">
-          <div className="flex items-center gap-1 border border-border rounded-[6px] overflow-hidden bg-surface">
-            <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} className="px-2 py-1 text-xs text-text hover:bg-surface-2" aria-label="Previous page">
-              ‹
-            </button>
-            <button type="button" onClick={() => setPage((p) => Math.min(numPages ?? 1, p + 1))} className="px-2 py-1 text-xs text-text hover:bg-surface-2" aria-label="Next page">
-              ›
-            </button>
-          </div>
-          <div className="flex items-center gap-1 border border-border rounded-[6px] overflow-hidden bg-surface">
-            <button type="button" onClick={() => setScale((s) => Math.max(0.6, s - 0.15))} className="px-2 py-1 text-xs text-text hover:bg-surface-2" aria-label="Zoom out">
-              −
-            </button>
-            <span className="text-[10px] font-mono text-text-faint px-1 min-w-[38px] text-center">{Math.round(scale * 100)}%</span>
-            <button type="button" onClick={() => setScale((s) => Math.min(2.5, s + 0.15))} className="px-2 py-1 text-xs text-text hover:bg-surface-2" aria-label="Zoom in">
-              +
-            </button>
-          </div>
-          <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono text-text-faint hover:text-text-dim px-1" title="Open PDF in new tab">
+        <div className="flex items-center gap-0.5 shrink-0">
+          <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} className="w-7 h-7 rounded-[5px] text-sm text-text-dim hover:text-text hover:bg-surface-2 disabled:opacity-30 transition-colors" aria-label="Previous page" disabled={page <= 1}>
+            ‹
+          </button>
+          <button type="button" onClick={() => setPage((p) => Math.min(numPages ?? 1, p + 1))} className="w-7 h-7 rounded-[5px] text-sm text-text-dim hover:text-text hover:bg-surface-2 disabled:opacity-30 transition-colors" aria-label="Next page" disabled={!numPages || page >= numPages}>
+            ›
+          </button>
+          <span className="w-px h-4 bg-border/70 mx-1" aria-hidden />
+          <button type="button" onClick={() => setScale((s) => Math.max(0.6, s - 0.15))} className="w-7 h-7 rounded-[5px] text-sm text-text-dim hover:text-text hover:bg-surface-2 transition-colors" aria-label="Zoom out">
+            −
+          </button>
+          <span className="font-mono text-[11px] text-text-faint w-[42px] text-center">{Math.round(scale * 100)}%</span>
+          <button type="button" onClick={() => setScale((s) => Math.min(2.5, s + 0.15))} className="w-7 h-7 rounded-[5px] text-sm text-text-dim hover:text-text hover:bg-surface-2 transition-colors" aria-label="Zoom in">
+            +
+          </button>
+          <span className="w-px h-4 bg-border/70 mx-1" aria-hidden />
+          <a href={url} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-[5px] flex items-center justify-center text-sm text-text-dim hover:text-text hover:bg-surface-2 transition-colors" title="Open in new tab">
             ↗
           </a>
         </div>
@@ -89,8 +95,8 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
             setError(null);
           }}
           onLoadError={(e: Error) => setError(e.message || "Failed to load PDF")}
-          loading={<div className="p-6 text-xs text-text-faint text-center">Loading PDF…</div>}
-          error={<div className="p-6 text-xs text-red-400 text-center">Failed to load PDF.</div>}
+          loading={<div className="p-6 text-xs text-text-faint text-center">Loading</div>}
+          error={<div className="p-6 text-xs text-red-400/90 text-center">Failed to load PDF.</div>}
           className="flex flex-col items-center gap-2"
         >
           <Page
@@ -98,7 +104,7 @@ export function PdfViewer({ url, heightClass = "h-[560px]" }: PdfViewerProps) {
             width={wrapW > 0 ? Math.max(240, Math.min(wrapW - 18, 612)) * scale : undefined}
             renderTextLayer={false}
             renderAnnotationLayer={false}
-            className="bg-white shadow-md"
+            className="bg-white shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
           />
         </Document>
       </div>

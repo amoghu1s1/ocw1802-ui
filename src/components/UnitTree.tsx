@@ -12,7 +12,7 @@ interface UnitTreeProps {
   onSelect?: () => void;
 }
 
-function shortEntryTitle(e: Entry): string {
+function shortEntryLabel(e: Entry): string {
   return e.kind === "session" ? e.title.replace(/^Session \d+:\s*/, "") : e.title;
 }
 
@@ -26,32 +26,32 @@ export default function UnitTree({ collapsed = false, onSelect }: UnitTreeProps)
 
   if (collapsed) {
     return (
-      <nav aria-label="Course units" className="space-y-3">
+      <nav aria-label="Course units" className="space-y-4">
         {course.units.map((unit, ui) => {
           const entries = unit.parts.flatMap((p) => p.entries);
           const doneCount = entries.filter((e) => entryProgress(e.slug, progress, e) >= 1).length;
           const pct = entries.length ? (doneCount / entries.length) * 100 : 0;
           return (
-            <div key={unit.slug} className="flex flex-col items-center gap-1" title={`Unit ${ui + 1}: ${unit.shortTitle}`}>
-              <span className="text-[10px] font-mono font-bold text-text-dim">{ui + 1}</span>
-              <div className="relative w-8 h-8">
-                <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="14" fill="none" className="stroke-border" strokeWidth="3" />
-                  <circle cx="18" cy="18" r="14" fill="none" className="stroke-accent" strokeWidth="3" strokeDasharray={`${(pct / 100) * 88} ${88 - (pct / 100) * 88}`} strokeLinecap="round" />
+            <div key={unit.slug} className="flex flex-col items-center gap-1.5" title={`Unit ${ui + 1}: ${unit.shortTitle}`}>
+              <span className="font-display text-sm text-text-dim leading-none">{ui + 1}</span>
+              <div className="relative w-7 h-7">
+                <svg className="w-7 h-7 -rotate-90" viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="14" fill="none" className="stroke-border" strokeWidth="2.5" />
+                  <circle cx="18" cy="18" r="14" fill="none" className="stroke-accent" strokeWidth="2.5" strokeDasharray={`${(pct / 100) * 88} ${88 - (pct / 100) * 88}`} strokeLinecap="round" />
                 </svg>
-                <span className="absolute inset-0 flex items-center justify-center text-[7px] font-mono text-text-faint">{doneCount}</span>
+                <span className="absolute inset-0 flex items-center justify-center font-mono text-[8px] text-text-faint">{doneCount}</span>
               </div>
               <div className="flex flex-col gap-px w-full">
                 {entries.map((e) => {
                   const href = `/s/${e.slug}`;
-                  const done = entryProgress(e.slug, progress, e) >= 1;
+                  const frac = entryProgress(e.slug, progress, e);
                   return (
                     <Link
                       key={e.slug}
                       href={href}
                       onClick={onSelect}
                       title={e.title}
-                      className={"block w-full h-1 rounded-full transition-colors " + (pathname === href ? "bg-accent" : done ? "bg-accent/50" : "bg-border/80 hover:bg-text-faint/50")}
+                      className={"block w-full h-1 rounded-full transition-colors " + (pathname === href ? "bg-accent" : frac >= 1 ? "bg-accent/40" : "bg-border/70 hover:bg-text-faint/40")}
                     />
                   );
                 })}
@@ -64,7 +64,7 @@ export default function UnitTree({ collapsed = false, onSelect }: UnitTreeProps)
   }
 
   return (
-    <nav aria-label="Course units" className="space-y-3">
+    <nav aria-label="Course units" className="space-y-4">
       {course.units.map((unit, ui) => {
         const isOpen = open[unit.slug] ?? true;
         const entries = unit.parts.flatMap((p) => p.entries);
@@ -72,77 +72,47 @@ export default function UnitTree({ collapsed = false, onSelect }: UnitTreeProps)
         return (
           <div key={unit.slug} className="space-y-1">
             <button
-              onClick={() => setOpen((o) => ({ ...o, [unit.slug]: !o[unit.slug] }))}
-              className="w-full flex items-center justify-between px-2 py-1.5 text-xs font-semibold text-text-dim hover:text-text hover:bg-surface-2 rounded-[6px] transition-colors text-left group"
+              onClick={() => setOpen((o) => ({ ...o, [unit.slug]: !isOpen }))}
+              className="w-full flex items-baseline gap-2 px-2 py-1 text-left group"
               aria-expanded={isOpen}
             >
-              <div className="flex items-center gap-1.5 truncate pr-2">
-                <svg className={"w-3.5 h-3.5 shrink-0 transition-transform " + (isOpen ? "rotate-90" : "")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-                <span className="truncate">Unit {ui + 1}: {unit.shortTitle}</span>
-              </div>
-              <span className="text-[10px] font-mono text-text-faint shrink-0">{doneCount}/{entries.length}</span>
+              <span className="font-display text-lg text-text-faint leading-none w-3 shrink-0">{ui + 1}</span>
+              <span className="flex-1 min-w-0 text-xs font-semibold text-text-dim group-hover:text-text transition-colors truncate">{unit.shortTitle}</span>
+              {doneCount > 0 && (
+                <span className="font-mono text-[10px] text-text-faint shrink-0">
+                  {doneCount}/{entries.length}
+                </span>
+              )}
             </button>
             {isOpen && (
-              <ul className="pl-3.5 space-y-0.5 border-l border-border/60 ml-2.5">
+              <ul className="space-y-px">
                 {unit.parts.map((part) => {
-                  // single-entry parts render flat
                   if (part.entries.length === 1) {
                     const e = part.entries[0];
-                    const href = `/s/${e.slug}`;
-                    const frac = entryProgress(e.slug, progress, e);
                     return (
                       <li key={part.slug}>
-                        <Link
-                          href={href}
-                          onClick={onSelect}
-                          className={"flex items-start justify-between gap-2 px-2 py-1.5 rounded-[6px] text-xs transition-colors group " + (pathname === href ? "bg-accent-dim text-text font-medium" : "text-text-dim hover:text-text hover:bg-surface-2")}
-                        >
-                          <span className="line-clamp-2 leading-tight flex items-start gap-1.5">
-                            {e.number != null && <span className="font-mono text-text-faint mt-px">{index.get(e.slug)}.</span>}
-                            {shortEntryLabel(e)}
-                          </span>
-                          <StatusDot frac={frac} />
-                        </Link>
+                        <EntryRow e={e} href={`/s/${e.slug}`} idx={index.get(e.slug)} frac={entryProgress(e.slug, progress, e)} active={pathname === `/s/${e.slug}`} onSelect={onSelect} />
                       </li>
                     );
                   }
+                  const isPartOpen = open[part.slug] ?? true;
                   return (
-                    <li key={part.slug} className="pt-1">
+                    <li key={part.slug}>
                       <button
-                        onClick={() => setOpen((o) => ({ ...o, [part.slug]: !(o[part.slug] ?? true) }))}
-                        className="w-full flex items-center justify-between px-2 py-1 text-[11px] font-medium text-text-dim hover:text-text transition-colors text-left"
-                        aria-expanded={partOpen(part.slug, open)}
+                        onClick={() => setOpen((o) => ({ ...o, [part.slug]: !isPartOpen }))}
+                        className="w-full flex items-baseline gap-2 pl-5 pr-2 py-1 text-left text-[11px] text-text-faint hover:text-text-dim transition-colors"
+                        aria-expanded={isPartOpen}
                       >
-                        <span className="flex items-center gap-1.5 truncate">
-                          <svg className={"w-3 h-3 shrink-0 transition-transform " + (partOpen(part.slug, open) ? "rotate-90" : "")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                          </svg>
-                          {part.shortTitle}
-                        </span>
+                        <span className="flex-1 min-w-0 truncate">{part.shortTitle}</span>
+                        <span className="font-display shrink-0" aria-hidden>{isPartOpen ? "–" : "+"}</span>
                       </button>
-                      {partOpen(part.slug, open) && (
-                        <ul className="ml-2.5 pl-2 border-l border-border/50 space-y-0.5">
-                          {part.entries.map((e) => {
-                            const href = `/s/${e.slug}`;
-                            const frac = entryProgress(e.slug, progress, e);
-                            return (
-                              <li key={e.slug}>
-                                <Link
-                                  href={href}
-                                  onClick={onSelect}
-                                  className={"flex items-start justify-between gap-2 px-2 py-1.5 rounded-[6px] text-xs transition-colors group " + (pathname === href ? "bg-accent-dim text-text font-medium" : "text-text-dim hover:text-text hover:bg-surface-2")}
-                                >
-                                  <span className="line-clamp-2 leading-tight flex items-start gap-1.5">
-                                    {e.number != null && <span className="font-mono text-text-faint mt-px">{index.get(e.slug)}.</span>}
-                                    {shortEntryLabel(e)}
-                                  </span>
-                                  <StatusDot frac={frac} />
-                                </Link>
-                              </li>
-                            );
-                          })}
+                      {isPartOpen && (
+                        <ul className="space-y-px">
+                          {part.entries.map((e) => (
+                            <li key={e.slug}>
+                              <EntryRow e={e} href={`/s/${e.slug}`} idx={index.get(e.slug)} frac={entryProgress(e.slug, progress, e)} active={pathname === `/s/${e.slug}`} onSelect={onSelect} />
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </li>
@@ -157,22 +127,21 @@ export default function UnitTree({ collapsed = false, onSelect }: UnitTreeProps)
   );
 }
 
-function shortEntryLabel(e: { kind: string; title: string; number: number | null }): string {
-  if (e.kind === "session") return e.title.replace(/^Session \d+:\s*/, "");
-  return e.title;
-}
-
-function partOpen(slug: string, open: Record<string, boolean>): boolean {
-  return open[slug] ?? true;
-}
-
-function StatusDot({ frac }: { frac: number }) {
-  if (frac >= 1)
-    return (
-      <svg className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-    );
-  if (frac > 0) return <div className="w-3.5 h-3.5 rounded-full border border-accent/70 bg-accent/30 shrink-0 mt-0.5" />;
-  return <div className="w-3.5 h-3.5 rounded-full border border-text-faint/40 group-hover:border-text-dim shrink-0 mt-0.5" />;
+function EntryRow({ e, href, idx, frac, active, onSelect }: { e: Entry; href: string; idx?: number; frac: number; active: boolean; onSelect?: () => void }) {
+  const done = frac >= 1;
+  return (
+    <Link
+      href={href}
+      onClick={onSelect}
+      title={e.title}
+      className={
+        "flex items-baseline gap-2 pl-5 pr-2 py-1 rounded-[5px] text-xs transition-colors " +
+        (active ? "bg-surface-2 text-text" : done ? "text-text-faint hover:text-text-dim" : "text-text-dim hover:text-text hover:bg-surface-2/60")
+      }
+    >
+      <span className="font-mono text-[10px] text-text-faint w-5 shrink-0 pt-px">{idx}</span>
+      <span className="flex-1 min-w-0 truncate leading-snug">{shortEntryLabel(e)}</span>
+      {done && <span className="font-display text-[11px] text-text-faint shrink-0" aria-label="Completed">✓</span>}
+    </Link>
+  );
 }

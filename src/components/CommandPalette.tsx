@@ -114,8 +114,8 @@ export default function CommandPalette() {
               go(items[sel].href);
             }
           }}
-          placeholder="Search sessions, transcripts, notes…"
-          className="w-full bg-transparent px-4 py-3.5 text-sm text-text placeholder:text-text-faint outline-none border-b border-border"
+          placeholder="Search the course"
+          className="w-full bg-transparent px-4 py-3.5 text-sm text-text placeholder:text-text-faint outline-none border-b border-border/70"
         />
         <ul className="max-h-[380px] overflow-auto py-1">
           {items.length === 0 && <li className="px-4 py-3 text-xs text-text-faint">No matches.</li>}
@@ -125,24 +125,20 @@ export default function CommandPalette() {
                 type="button"
                 onClick={() => go(it.href)}
                 onMouseEnter={() => setSel(i)}
-                className={`w-full text-left px-4 py-2.5 flex items-center gap-3 transition-colors ${i === sel ? "bg-surface text-text" : "text-text-dim"}`}
+                className={`w-full text-left px-4 py-2.5 flex items-baseline gap-3 transition-colors ${i === sel ? "bg-surface-2 text-text" : "text-text-dim"}`}
               >
-                <span
-                  className={`text-[9px] uppercase font-mono px-1.5 py-0.5 rounded-[4px] shrink-0 ${
-                    it.kind === "transcript" ? "bg-accent-dim text-accent" : it.kind === "note" ? "bg-amber-500/15 text-amber-300" : "bg-border/60 text-text-faint"
-                  }`}
-                >
-                  {it.kind === "transcript" ? "quote" : it.kind === "note" ? "note" : "go"}
-                </span>
                 <span className="flex-1 min-w-0">
-                  <span className="block text-xs font-medium truncate">{it.label}</span>
-                  <span className="block text-[10px] text-text-faint truncate">{it.sub}</span>
+                  <span className="block text-xs truncate">{it.label}</span>
+                  <span className="block text-[10px] text-text-faint truncate mt-0.5">{it.sub}</span>
+                </span>
+                <span className="text-[10px] text-text-faint shrink-0">
+                  {it.kind === "transcript" ? "transcript" : it.kind === "note" ? "note" : "open"}
                 </span>
               </button>
             </li>
           ))}
         </ul>
-        <div className="px-4 py-2 border-t border-border flex gap-3 text-[10px] font-mono text-text-faint">
+        <div className="px-4 py-2 border-t border-border/70 flex gap-4 text-[10px] text-text-faint">
           <span>↑↓ navigate</span>
           <span>↵ open</span>
           <span>esc close</span>

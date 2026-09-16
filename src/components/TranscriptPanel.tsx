@@ -59,9 +59,7 @@ export function TranscriptPanel({ lines, currentTime = 0, onSeek }: TranscriptPa
 
   if (!lines.length) {
     return (
-      <div className="p-4 text-xs text-text-dim text-center border border-border bg-surface rounded-[8px]">
-        No transcript available for this video.
-      </div>
+      <div className="rounded-[10px] border border-border/70 bg-surface p-4 text-xs text-text-faint text-center">No transcript for this video.</div>
     );
   }
 
@@ -72,17 +70,17 @@ export function TranscriptPanel({ lines, currentTime = 0, onSeek }: TranscriptPa
   const useVirtual = filtered.length > 80;
 
   return (
-    <div className="flex flex-col h-[500px] bg-surface border border-border rounded-[8px] p-3">
+    <div className="flex flex-col h-[500px] rounded-[10px] border border-border/70 bg-surface p-3">
       <div className="mb-2 shrink-0 flex items-center gap-2">
         <input
           type="text"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          placeholder="Search transcript…"
-          className="flex-1 bg-surface-2 border border-border text-text placeholder:text-text-faint rounded-[6px] px-3 py-1.5 text-xs outline-none focus:border-text-dim transition-colors"
+          placeholder="Search transcript"
+          className="flex-1 bg-surface-2/70 border border-border/60 text-text placeholder:text-text-faint rounded-[5px] px-2.5 py-1.5 text-xs outline-none focus:border-text-faint transition-colors"
           aria-label="Filter transcript"
         />
-        <span className="text-[10px] font-mono text-text-faint whitespace-nowrap">
+        <span className="font-mono text-[10px] text-text-faint whitespace-nowrap">
           {filtered.length}/{lines.length}
         </span>
       </div>
@@ -128,7 +126,7 @@ const TransRow = forwardRef<HTMLDivElement, { line: TranscriptLine; active: bool
         }
       }}
       className={`flex gap-3 px-2 py-1.5 rounded-[4px] cursor-pointer text-xs transition-colors min-h-[28px] items-start ${
-        active ? "bg-accent-dim text-accent font-medium border-l-2 border-accent" : "text-text-dim hover:bg-surface-2 hover:text-text"
+        active ? "bg-surface-2 text-text" : "text-text-dim hover:bg-surface-2/60 hover:text-text"
       }`}
       aria-current={active ? "true" : undefined}
     >

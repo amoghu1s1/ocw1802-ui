@@ -21,14 +21,13 @@ export function BoardGallery({ boards }: { boards: BoardImage[] }) {
 
   return (
     <div>
-      <h3 className="text-[10px] uppercase tracking-wider font-semibold text-text-faint mb-2">Board Notes</h3>
       <div className="flex gap-2 overflow-x-auto pb-1">
         {boards.map((b, i) => (
           <button
             key={b.localPath}
             type="button"
             onClick={() => setOpen(i)}
-            className="shrink-0 w-40 aspect-[16/10] bg-surface border border-border rounded-[6px] overflow-hidden hover:border-text-dim transition-colors"
+            className="shrink-0 w-40 aspect-[16/10] rounded-[6px] border border-border/70 overflow-hidden hover:border-text-faint transition-colors"
             title={`Enlarge board ${i + 1}`}
             aria-label={`Enlarge board ${i + 1}`}
           >
@@ -71,7 +70,7 @@ export function BoardGallery({ boards }: { boards: BoardImage[] }) {
               ›
             </button>
           )}
-          <span className="absolute bottom-4 font-mono text-[10px] text-text-dim">
+          <span className="absolute bottom-4 font-mono text-[11px] text-text-dim">
             {open + 1} / {boards.length}
           </span>
         </div>

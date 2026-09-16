@@ -221,9 +221,9 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
 
   if (!clip || offline) {
     return (
-      <div className="w-full aspect-video bg-surface border border-border rounded-[8px] flex flex-col items-center justify-center text-text-dim gap-2 p-6 text-center">
-        <span className="font-medium text-text">{offline ? "Offline — video unavailable" : "No video available"}</span>
-        <span className="text-xs text-text-faint">{offline ? "Progress is saved locally. PDFs & transcripts work offline." : "This page has documents only."}</span>
+      <div className="w-full aspect-video rounded-[10px] border border-border/70 bg-surface flex flex-col items-center justify-center gap-2 p-6 text-center">
+        <span className="text-sm text-text">{offline ? "Video unavailable offline" : "No video available"}</span>
+        <span className="text-xs text-text-faint">{offline ? "Progress is saved locally; PDFs and transcripts still work." : "This page has documents only."}</span>
       </div>
     );
   }
@@ -233,8 +233,8 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
   const frac = clipDur ? relT / clipDur : 0;
 
   return (
-    <div className="space-y-2">
-      <div className="w-full aspect-video bg-surface border border-border rounded-[8px] overflow-hidden relative">
+    <div className="space-y-2.5 min-w-0">
+      <div className="w-full aspect-video rounded-[10px] border border-border/70 overflow-hidden relative bg-surface">
         {error && (
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-surface p-4 text-center">
             <span className="text-sm text-text">Player error</span>
@@ -246,7 +246,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
 
       {/* clip-relative progress bar with bookmark pins */}
       <div className="relative h-[18px] group/bar">
-        <div className="absolute top-1.5 left-0 right-0 h-1 bg-surface-2 border border-border rounded-full overflow-hidden">
+        <div className="absolute top-1.5 left-0 right-0 h-1 bg-surface-2 rounded-full overflow-hidden">
           <div className="h-full bg-accent/80 transition-all duration-200" style={{ width: `${frac * 100}%` }} />
         </div>
         {bookmarks.map((b) => (
@@ -259,29 +259,29 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
             style={{ left: `${Math.min(100, (b.ts / Math.max(1, clipDur ?? relT ?? 1)) * 100)}%` }}
             aria-label={`Bookmark at ${fmtTime(b.ts)}`}
           >
-            <span className="w-1.5 h-2.5 bg-amber-400 rounded-sm" />
+            <span className="w-1.5 h-2.5 rounded-[2px] bg-accent/80" />
           </button>
         ))}
       </div>
 
       {/* clip controls */}
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <button
             type="button"
             onClick={() => goto(idx - 1)}
             disabled={idx === 0}
-            className="px-2.5 py-1.5 rounded-[6px] border border-border text-xs text-text-dim hover:text-text hover:border-text-dim disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            className="px-2.5 py-1.5 rounded-[5px] text-xs text-text-dim hover:text-text hover:bg-surface-2/70 disabled:opacity-30 disabled:pointer-events-none transition-colors"
           >
-            ← Prev clip
+            ‹ Previous clip
           </button>
           <button
             type="button"
             onClick={() => goto(idx + 1)}
             disabled={idx >= clips.length - 1}
-            className="px-2.5 py-1.5 rounded-[6px] border border-border text-xs text-text-dim hover:text-text hover:border-text-dim disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            className="px-2.5 py-1.5 rounded-[5px] text-xs text-text-dim hover:text-text hover:bg-surface-2/70 disabled:opacity-30 disabled:pointer-events-none transition-colors"
           >
-            Next clip →
+            Next clip ›
           </button>
           <button
             type="button"
@@ -289,32 +289,29 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
               const t = clipEnd != null ? Math.max(0, relT) : time;
               onAddBookmark({ ts: Math.round(t), label: clip.title || `Clip ${idx + 1}` });
             }}
-            className="px-2.5 py-1.5 rounded-[6px] border border-border text-xs text-amber-300/90 hover:text-amber-300 hover:border-amber-500/40 transition-colors flex items-center gap-1"
-            title="Bookmark this moment"
+            className="px-2.5 py-1.5 rounded-[5px] text-xs text-text-faint hover:text-text hover:bg-surface-2/70 transition-colors"
+            title="Pin this moment"
           >
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-            </svg>
-            Pin
+            Pin moment
           </button>
         </div>
-        <span className="text-[10px] font-mono text-text-faint">
-          clip {idx + 1}/{clips.length} · {fmtTime(relT)}{clipDur != null ? ` / ${fmtTime(clipDur)}` : ""}
+        <span className="font-mono text-[10px] text-text-faint">
+          {idx + 1}/{clips.length} · {fmtTime(relT)}{clipDur != null ? ` / ${fmtTime(clipDur)}` : ""}
         </span>
       </div>
 
       {/* outline */}
-      <ol className="space-y-0.5 max-h-44 overflow-auto pr-1">
+      <ol className="space-y-px max-h-44 overflow-auto pr-1">
         {clips.map((c, i) => (
           <li key={`${c.ytId}:${c.start}`}>
             <button
               type="button"
               onClick={() => goto(i)}
-              className={`w-full text-left px-2 py-1.5 rounded-[6px] text-xs transition-colors flex items-center gap-2 ${
-                i === idx ? "bg-accent-dim text-accent font-medium" : "text-text-dim hover:text-text hover:bg-surface-2"
+              className={`w-full text-left px-2 py-1.5 rounded-[5px] text-xs transition-colors flex items-center gap-2 ${
+                i === idx ? "bg-surface-2 text-text" : "text-text-dim hover:text-text hover:bg-surface-2/60"
               }`}
             >
-              <span className="font-mono text-text-faint w-10 shrink-0">{i === idx ? fmtTime(relT) : `#${i + 1}`}</span>
+              <span className="font-mono text-[10px] text-text-faint w-10 shrink-0">{i === idx ? fmtTime(relT) : `#${i + 1}`}</span>
               <span className="truncate">{clipLabel(c)}</span>
             </button>
           </li>

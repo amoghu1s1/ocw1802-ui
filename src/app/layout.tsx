@@ -1,22 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { SidebarProvider } from "@/lib/sidebar-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import SidebarShell from "@/components/SidebarShell";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+/* Signature display face, self-hosted (Fontshare Sentient). Body stays system-ui, data uses system mono. */
+const sentient = localFont({
+  src: [
+    { path: "./fonts/sentient-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/sentient-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/sentient-700.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/sentient-400-italic.woff2", weight: "400", style: "italic" },
+  ],
+  variable: "--font-sentient",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: {
     default: "18.02SC Multivariable Calculus · MIT OCW",
-    template: "%s — 18.02SC",
+    template: "%s · 18.02SC",
   },
   description: "A personal dashboard for MIT OpenCourseWare 18.02SC Multivariable Calculus (Fall 2010, Prof. Denis Auroux).",
   metadataBase: new URL("http://localhost:3000"),
@@ -36,7 +40,7 @@ function ThemeScript() {
   const code =
     "(function(){try{" +
     'var A={Red:"#C41E24",Blue:"#2563EB",Green:"#16A34A",Purple:"#9333EA",Orange:"#EA580C",Teal:"#0D9488",Pink:"#DB2777",Amber:"#D97706"};' +
-    'var T={"Default Dark":["#0a0a0a","#141414","#1c1c1c","#262626","#e5e5e5","#a3a3a3","#525252"],Dracula:["#282a36","#21222c","#2d2f3d","#44475a","#f8f8f2","#bfbfbf","#6272a4"],"Atomic Dark":["#1b1d1e","#232526","#2c2d2e","#3c3d3e","#c5c8c6","#9da0a0","#505354"],Nord:["#2e3440","#2e3440","#3b4252","#434c5e","#eceff4","#d8dee9","#4c566a"],"Tokyo Night":["#1a1b26","#1f2335","#24283b","#292e42","#c0caf5","#9aa5ce","#565f89"]};' +
+    'var T={"Default Dark":["#0a0a0a","#141414","#1c1c1c","#262626","#ececec","#b8b8b8","#868686"],Dracula:["#282a36","#21222c","#2d2f3d","#44475a","#f8f8f2","#c8ccd8","#8f98b3"],"Atomic Dark":["#1b1d1e","#232526","#2c2d2e","#3c3d3e","#d8dbd9","#aeb3b1","#878d8b"],Nord:["#2e3440","#343b4b","#3b4252","#434c5e","#eceff4","#c3cad6","#8d97a8"],"Tokyo Night":["#1a1b26","#1f2335","#24283b","#292e42","#c8d3f5","#aab9e9","#8590b5"]};' +
     "var s=document.documentElement.style;" +
     "function rgb(h){return parseInt(h.slice(1,3),16)+' '+parseInt(h.slice(3,5),16)+' '+parseInt(h.slice(5,7),16);}" +
     'var a=localStorage.getItem("ocw1802.theme.accent");' +
@@ -49,7 +53,7 @@ function ThemeScript() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${sentient.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
