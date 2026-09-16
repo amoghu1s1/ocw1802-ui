@@ -18,7 +18,7 @@ interface Entry {
   clips: Clip[];
   recitation: Clip | null;
   boards: { localPath: string }[];
-  pdfs: { kind: string; localPath: string }[];
+  pdfs: { kind: string; title: string; localPath: string }[];
 }
 interface Part {
   slug: string;
@@ -66,6 +66,8 @@ for (const u of course.units) {
         nPdfs++;
         if (!fs.existsSync(path.join(root, "public", pdf.localPath.replace(/^\//, "")))) error(`missing pdf ${pdf.localPath} (${e.slug})`);
       }
+      if (e.kind === "problem-set" && !e.pdfs.some((pdf) => pdf.kind === "problems" && !/supplemental/i.test(pdf.title)))
+        error(`problem set ${e.slug} has no primary problem-set PDF (only supplemental)`);
     }
   }
 }

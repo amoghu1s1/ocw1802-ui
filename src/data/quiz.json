@@ -79,5 +79,1113 @@
         "solution": "The difference satisfies $|r_\\alpha - r_0| = \\frac{2\\sqrt{5}\\,m\\,|\\sin t|}{|2 - m\\sin t|}$. At $t = 0, \\pi$ this is $0$; at $t = \\pi/2$ it is $\\frac{2\\sqrt{5}\\,m}{2-m}$; at $t = 3\\pi/2$, $\\frac{2\\sqrt{5}\\,m}{2+m}$. The largest is at $t = \\pi/2$."
       }
     ]
+  },
+  "problem-set-1": {
+    "problems": [
+      {
+        "id": "ps1-1",
+        "label": "1",
+        "type": "mc",
+        "prompt": "Find the dihedral angle between two faces of a regular tetrahedron.",
+        "options": [
+          "$\\cos^{-1}(1/3) \\approx 70.5^\\circ$",
+          "$\\cos^{-1}(1/2) = 60^\\circ$",
+          "$\\cos^{-1}(2/3) \\approx 48.2^\\circ$",
+          "$\\cos^{-1}(1/\\sqrt{3}) \\approx 54.7^\\circ$"
+        ],
+        "answer": 0,
+        "solution": "Inscribe the tetrahedron in a unit cube: vertices $(0,0,0)$, $(1,1,0)$, $(1,0,1)$, $(0,1,1)$. Face normals: $n_1 = (1,0,1) \\times (1,1,0) = (-1,1,1)$ and $n_2 = (1,1,0) \\times (0,1,1) = (1,-1,1)$. Then $\\cos\\theta = \\frac{|n_1 \\cdot n_2|}{|n_1||n_2|} = \\frac{1}{3}$, so $\\theta = \\cos^{-1}(1/3) \\approx 70.5^\\circ$."
+      },
+      {
+        "id": "ps1-2a",
+        "label": "2a",
+        "type": "self",
+        "prompt": "Show the polarization identity $\\frac{1}{4}\\left(|u+v|^2 - |u-v|^2\\right) = u \\cdot v$ for any vectors $u, v$ — using vector algebra, not components.",
+        "solution": "Expand both norms by bilinearity: $|u+v|^2 = u \\cdot u + 2u \\cdot v + v \\cdot v$ and $|u-v|^2 = u \\cdot u - 2u \\cdot v + v \\cdot v$. Subtracting gives $|u+v|^2 - |u-v|^2 = 4\\,u \\cdot v$, so $u \\cdot v = \\frac{1}{4}(|u+v|^2 - |u-v|^2)$."
+      },
+      {
+        "id": "ps1-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "Which unit vector bisects the (smaller) angle between two non-zero vectors $u$ and $v$? (Hats denote unit vectors.)",
+        "options": [
+          "$\\dfrac{\\hat{u} + \\hat{v}}{|\\hat{u} + \\hat{v}|}$",
+          "$\\dfrac{u + v}{|u + v|}$",
+          "$\\dfrac{\\hat{u} - \\hat{v}}{|\\hat{u} - \\hat{v}|}$",
+          "$\\dfrac{\\hat{u} + \\hat{v}}{2}$"
+        ],
+        "answer": 0,
+        "solution": "The diagonal of the rhombus built on the unit vectors $\\hat{u}$ and $\\hat{v}$ bisects the angle between them; normalize it: $(\\hat{u} + \\hat{v})/|\\hat{u} + \\hat{v}|$. Note $\\frac{u+v}{|u+v|}$ only bisects when $|u| = |v|$."
+      },
+      {
+        "id": "ps1-3b",
+        "label": "3b",
+        "type": "self",
+        "prompt": "Tacking: the wind $w = a\\,i$ is first projected onto the line $l_s \\perp$ sail, then that force is projected onto the boat axis $l_B$. Find the final projection $w_2$ in terms of the angles $\\alpha$ (sail) and $\\beta$ (boat axis).",
+        "solution": "The first projection has length $|w_1| = a\\cos\\alpha$, along the direction making angle $\\alpha + \\beta$ with the $x$-axis (from the sketch). Projecting onto $l_B$: $w_2 = a\\cos\\alpha\\cos\\beta\\,(\\cos(\\alpha+\\beta),\\, \\sin(\\alpha+\\beta))$."
+      },
+      {
+        "id": "ps1-3c",
+        "label": "3c",
+        "type": "mc",
+        "prompt": "When does the twice-projected wind $w_2$ have a component in the $-i$ (upwind) direction?",
+        "options": [
+          "$\\alpha + \\beta > \\pi/2$",
+          "$\\alpha + \\beta < \\pi/2$",
+          "$\\alpha > \\beta$",
+          "never — projecting twice can't point upwind"
+        ],
+        "answer": 0,
+        "solution": "The $i$-component of $w_2$ is $a\\cos\\alpha\\cos\\beta\\cos(\\alpha+\\beta)$. With $0 \\le \\alpha, \\beta < \\pi/2$, the first two factors are positive, so the component is negative exactly when $\\alpha + \\beta > \\pi/2$ — the boat can sail into the wind by choosing the sail angle so that $\\alpha + \\beta$ exceeds a right angle."
+      }
+    ]
+  },
+  "problem-set-2": {
+    "problems": [
+      {
+        "id": "ps2-1",
+        "label": "1",
+        "type": "self",
+        "prompt": "Three planes $P_1, P_2, P_3$ intersect pairwise in three distinct parallel lines. Explain why their normals $n_1, n_2, n_3$ must be coplanar — geometrically, then algebraically.",
+        "solution": "Geometric: cut the three parallel lines with a single plane orthogonal to them. Each normal is perpendicular to its intersection line, so all three normals lie in that cutting plane. Algebraic: the system $n_i \\cdot x = a_i$ has no solution, so its determinant vanishes: $n_1 \\cdot (n_2 \\times n_3) = 0$ — a zero scalar triple product means the normals are coplanar."
+      },
+      {
+        "id": "ps2-2a",
+        "label": "2a",
+        "type": "mc",
+        "prompt": "Mixing problem: product $P_1$ uses $M_1{:}M_2{:}M_3 = 1{:}2{:}3$, $P_2$ uses $1{:}3{:}5$, $P_3$ uses $3{:}5{:}8$. Which matrix equation gives the produced amounts $p$ from the raw amounts $m$?",
+        "options": [
+          "$Ap = m$ with $A = \\begin{pmatrix} 1/6 & 1/9 & 3/16 \\\\ 1/3 & 1/3 & 5/16 \\\\ 1/2 & 5/9 & 1/2 \\end{pmatrix}$",
+          "$Ap = m$ with $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 5 \\\\ 3 & 5 & 8 \\end{pmatrix}$",
+          "$Ap = m$ with $A = \\begin{pmatrix} 1/6 & 1/3 & 1/2 \\\\ 1/9 & 1/3 & 5/9 \\\\ 3/16 & 5/16 & 1/2 \\end{pmatrix}$",
+          "$Am = p$ with $A = \\begin{pmatrix} 1/6 & 1/9 & 3/16 \\\\ 1/3 & 1/3 & 5/16 \\\\ 1/2 & 5/9 & 1/2 \\end{pmatrix}$"
+        ],
+        "answer": 0,
+        "solution": "Each column of $A$ is a product's composition normalized to sum to 1: $P_1 \\to (1/6, 1/3, 1/2)$, $P_2 \\to (1/9, 1/3, 5/9)$, $P_3 \\to (3/16, 5/16, 1/2)$. Then $Ap$ is the vector of raw materials used, so $p = A^{-1}m$."
+      },
+      {
+        "id": "ps2-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "For a run using $m = (137, 279, 448)$ units of $M_1, M_2, M_3$, how many units of each product were produced?",
+        "options": [
+          "$p = (144, 288, 432)$",
+          "$p = (137, 279, 448)$",
+          "$p = (432, 288, 144)$",
+          "$p = (288, 144, 432)$"
+        ],
+        "answer": 0,
+        "solution": "Solving $Ap = m$ gives $p = (144, 288, 432)$. Check: $144(\\frac16,\\frac13,\\frac12) + 288(\\frac19,\\frac13,\\frac59) + 432(\\frac{3}{16},\\frac{5}{16},\\frac12) = (24,48,72) + (32,96,160) + (81,135,216) = (137, 279, 448)$."
+      },
+      {
+        "id": "ps2-2c",
+        "label": "2c",
+        "type": "self",
+        "prompt": "Choose ratios for $P_3$ (in lowest terms, different from the others) that make the system have non-unique solutions.",
+        "solution": "Make the third column a linear combination of the first two, e.g. their average: $\\left(\\frac{5}{36}, \\frac{1}{3}, \\frac{19}{36}\\right)$, i.e. ratios $5:12:19$. Then $\\det A = 0$: for suitable $m$ there are infinitely many solutions (and for others, none)."
+      },
+      {
+        "id": "ps2-3a",
+        "label": "3a",
+        "type": "mc",
+        "prompt": "The steepest direction on a plane $P$ with normal $n$ (not parallel to the $xy$-plane) is the in-plane direction making the largest acute angle with the $xy$-plane. Which vector points that way?",
+        "options": [
+          "$w = (n \\times k) \\times n$",
+          "$w = n \\times k$",
+          "$w = k \\times n$",
+          "$w = k$"
+        ],
+        "answer": 0,
+        "solution": "$n \\times k$ lies along the intersection of $P$ with the $xy$-plane. The steepest direction lies in $P$ (so is $\\perp n$) and is perpendicular to that intersection line, hence $w = (n \\times k) \\times n$, which equals $|n|^2$ times the projection of $k$ onto $P$."
+      },
+      {
+        "id": "ps2-3b",
+        "label": "3b",
+        "type": "self",
+        "prompt": "Now $P$ contains two non-parallel vectors $u, v$ (not both in the $xy$-plane). Give the formula for the steepest direction $w$ in terms of $u$ and $v$.",
+        "solution": "Take $n = u \\times v$ as a normal to $P$ and substitute into part (a): $w = ((u \\times v) \\times k) \\times (u \\times v)$."
+      }
+    ]
+  },
+  "problem-set-4": {
+    "problems": [
+      {
+        "id": "ps4-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "For $F_c(x,t) = f(x - ct)$ with $f(u) = \\cos^2 u$, what does $F_2(x,t)$ describe when $t$ is time and $x$ is position on a 1-D string?",
+        "options": [
+          "A traveling wave: the shape $f$ moves to the right at speed $2$",
+          "A standing wave that oscillates in place",
+          "A traveling wave moving left at speed $\\tfrac12$",
+          "A steady state, independent of $t$"
+        ],
+        "answer": 0,
+        "solution": "At each fixed $t$, $x \\mapsto F_2(x,t) = \\cos^2(x - 2t)$ is the same profile, shifted right by $2t$. So the displacement pattern travels to the right at wave speed $2$ (linear units per unit time) — a traveling wave."
+      },
+      {
+        "id": "ps4-2a",
+        "label": "2a",
+        "type": "mc",
+        "prompt": "Find the curve of intersection of $z = x^2 - y^2$ and $z = 2 + (x-y)^2$ in parametric form.",
+        "options": [
+          "$r(t) = \\left(t + \\tfrac1t,\\; t,\\; 2 + \\tfrac{1}{t^2}\\right)$",
+          "$r(t) = \\left(t - \\tfrac1t,\\; t,\\; 2 - \\tfrac{1}{t^2}\\right)$",
+          "$r(t) = \\left(t,\\; t + \\tfrac1t,\\; 2 + \\tfrac{1}{t^2}\\right)$",
+          "$r(t) = \\left(t + \\tfrac1t,\\; t,\\; 2 - \\tfrac{1}{t^2}\\right)$"
+        ],
+        "answer": 0,
+        "solution": "Set the $z$'s equal: $x^2 - y^2 = 2 + (x-y)^2$, which reduces to $-2y^2 + 2xy = 2$, i.e. $x = y + \\frac1y$. With $y = t$: $x = t + \\frac1t$ and $z = 2 + (x-y)^2 = 2 + \\frac{1}{t^2}$."
+      },
+      {
+        "id": "ps4-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "Find the angle of intersection of the two surfaces at $(2,1,3)$ (the angle between their tangent planes).",
+        "options": [
+          "$\\cos^{-1}\\!\\left(\\frac{13}{3\\sqrt{21}}\\right) \\approx 19^\\circ$",
+          "$\\cos^{-1}\\!\\left(\\frac{13}{9}\\right) \\approx 45^\\circ$",
+          "$\\cos^{-1}\\!\\left(\\frac{13}{21}\\right) \\approx 52^\\circ$",
+          "$\\cos^{-1}\\!\\left(\\frac{8}{3\\sqrt{21}}\\right) \\approx 54^\\circ$"
+        ],
+        "answer": 0,
+        "solution": "Normals from the gradients: $n_1 = (f_x, f_y, -1) = (4, -2, -1)$ for $z = x^2 - y^2$, and $n_2 = (2, -2, -1)$ for $z = 2 + (x-y)^2$. Then $\\cos\\theta = \\frac{n_1 \\cdot n_2}{|n_1||n_2|} = \\frac{13}{3\\sqrt{21}}$, so $\\theta \\approx 19^\\circ$."
+      },
+      {
+        "id": "ps4-2c",
+        "label": "2c",
+        "type": "self",
+        "prompt": "Check that the tangent vector to the intersection curve at $(2,1,3)$ is parallel to the tangent plane of each surface.",
+        "solution": "$r(t) = (t + t^{-1}, t, 2 + t^{-2})$ gives $r'(t) = (1 - t^{-2}, 1, -2t^{-3})$, and $P_0$ is $r(1)$, so $r'(1) = (0,1,-2)$. Check against both normals: $n_1 \\cdot r'(1) = (4,-2,-1) \\cdot (0,1,-2) = 0$ and $n_2 \\cdot r'(1) = (2,-2,-1) \\cdot (0,1,-2) = 0$. Perpendicular to each normal means parallel to each tangent plane."
+      },
+      {
+        "id": "ps4-3b",
+        "label": "3b",
+        "type": "mc",
+        "prompt": "For $f(x,y) = \\frac{4}{1 + x^2 + y^2}$, the curve $C_2$ in the $xy$-plane is $r_2(t) = (t,\\, \\frac32 - t^2)$. Which is the parametric equation of the curve $C$ on the surface above $C_2$?",
+        "options": [
+          "$r(t) = \\left(t,\\; \\tfrac32 - t^2,\\; \\dfrac{4}{1 + t^2 + \\left(\\tfrac32 - t^2\\right)^2}\\right)$",
+          "$r(t) = \\left(t,\\; \\tfrac32 - t^2,\\; \\dfrac{4}{1 + t^2 + \\left(\\tfrac32 - t^2\\right)}\\right)$",
+          "$r(t) = \\left(t,\\; \\tfrac32 - t^2,\\; \\dfrac{4}{1 - t^2 - \\left(\\tfrac32 - t^2\\right)^2}\\right)$",
+          "$r(t) = \\left(t,\\; \\tfrac32 - t^2,\\; \\dfrac{1 + t^2 + \\left(\\tfrac32 - t^2\\right)^2}{4}\\right)$"
+        ],
+        "answer": 0,
+        "solution": "Points of $C$ are $(x, y, f(x,y))$ with $(x,y)$ on $C_2$: substitute $x = t$, $y = \\frac32 - t^2$ into $f$."
+      },
+      {
+        "id": "ps4-3d",
+        "label": "3d",
+        "type": "mc",
+        "prompt": "Where does the $z$-component of the curve $C$ have its local maxima and minima?",
+        "options": [
+          "Local min at $\\left(0, \\tfrac32, \\tfrac{16}{13}\\right)$; local max at $\\left(\\pm 1, \\tfrac12, \\tfrac{16}{9}\\right)$",
+          "Local max at $\\left(0, \\tfrac32, \\tfrac{16}{13}\\right)$; local min at $\\left(\\pm 1, \\tfrac12, \\tfrac{16}{9}\\right)$",
+          "Local min at $\\left(0, \\tfrac32, \\tfrac{16}{13}\\right)$; no local maxima on $C$",
+          "Local max at $\\left(\\pm 1, \\tfrac12, \\tfrac{16}{9}\\right)$ only"
+        ],
+        "answer": 0,
+        "solution": "$z(t) = \\frac{4}{1 + t^2 + (\\frac32 - t^2)^2}$ has $\\frac{dz}{dt} \\propto t(t^2 - 1)$, zero at $t = 0, \\pm 1$. At $t = 0$: point $(0, \\frac32)$ with $z = \\frac{16}{13}$ (local min); at $t = \\pm 1$: $(\\pm 1, \\frac12)$ with $z = \\frac{16}{9}$ (local max)."
+      },
+      {
+        "id": "ps4-3e",
+        "label": "3e",
+        "type": "self",
+        "prompt": "Let $h(t)$ be the square of the distance from the origin to a point of $C_2$. Find its local maxima/minima and explain the relation to part (d).",
+        "solution": "$h(t) = t^2 + \\left(\\frac32 - t^2\\right)^2$, so $h'(t) = 4t(t^2 - 1)$ — the same critical points $t = 0, \\pm 1$ as in (d). Because $f = \\frac{4}{1 + r^2}$ decreases symmetrically as the point moves away from the origin, distance and height trade off: the point farthest from $O$ (distance local max at $t=0$) has $z$ local min, and the nearest points ($t = \\pm 1$, distance local min) have $z$ local max."
+      },
+      {
+        "id": "ps4-4",
+        "label": "4",
+        "type": "mc",
+        "prompt": "Three non-negative numbers satisfy $x^2 + y^2 + z^2 = 27$. Find the maximum and minimum of $x^3 + y^3 + z^3$.",
+        "options": [
+          "max $81\\sqrt{3}$ (one number $= 3\\sqrt{3}$), min $81$ (at $3, 3, 3$)",
+          "max $81$, min $81\\sqrt{3}$",
+          "max $81\\sqrt{3}$, min $0$",
+          "max $243$, min $81$"
+        ],
+        "answer": 0,
+        "solution": "Critical points of $f = x^3 + y^3 + (27 - x^2 - y^2)^{3/2}$: $(0,0)$ relative max with $S = 81\\sqrt{3}$; $\\left(0, 3\\sqrt{3/2}\\right)$, $\\left(3\\sqrt{3/2}, 0\\right)$ saddles; $(3,3)$ relative min with $S = 81$. On the boundary $x^2 + y^2 = 27$: $S = 27(\\cos^3 t + \\sin^3 t)$, max $81\\sqrt{3}$ at axis points, min $\\frac{81\\sqrt{6}}{2} \\approx 99.2$ at the diagonal. Overall: max $81\\sqrt{3}$ (concentrated at one number $= 3\\sqrt3$), min $81$ (balanced at $(3,3,3)$)."
+      },
+      {
+        "id": "ps4-5",
+        "label": "5",
+        "type": "mc",
+        "prompt": "Tacking (continued): $f(\\alpha,\\beta) = \\cos\\alpha\\cos\\beta\\cos(\\alpha+\\beta)$ gives the $i$-component of the twice-projected wind. Which angles give the most negative component, and what fraction of the wind is it?",
+        "options": [
+          "$\\alpha = \\beta = \\pi/3$, capturing $\\frac18 = 12.5\\%$",
+          "$\\alpha = \\beta = \\pi/4$, capturing $\\frac14$",
+          "$\\alpha = \\beta = \\pi/6$, capturing $\\frac{3\\sqrt{3}}{8}$",
+          "$\\alpha = \\pi/2$, $\\beta = 0$, capturing $1$"
+        ],
+        "answer": 0,
+        "solution": "Critical points of $f$: $f_\\alpha = -\\cos\\beta\\sin(2\\alpha+\\beta) = 0$, $f_\\beta = -\\cos\\alpha\\sin(\\alpha+2\\beta) = 0$. Interior solution: $2\\alpha + \\beta = \\pi$ and $\\alpha + 2\\beta = \\pi$, so $\\alpha = \\beta = \\pi/3$. Then $f = \\frac12 \\cdot \\frac12 \\cdot \\cos\\frac{2\\pi}{3} = -\\frac18$: at best a sailboat can capture $12.5\\%$ of the wind's force when tacking."
+      }
+    ]
+  },
+  "problem-set-5": {
+    "problems": [
+      {
+        "id": "ps5-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "Poiseuille's law: $R = k\\,w\\,r^{-4}$ (resistance vs. length $w$ and radius $r$). Which is the linear approximation $dR$?",
+        "options": [
+          "$dR = k\\left(-4wr^{-5}\\,dr + r^{-4}\\,dw\\right)$",
+          "$dR = k\\left(4wr^{-5}\\,dr + r^{-4}\\,dw\\right)$",
+          "$dR = k\\left(-4wr^{-5}\\,dr - r^{-4}\\,dw\\right)$",
+          "$dR = k\\left(wr^{-4}\\,dr - 4r^{-5}\\,dw\\right)$"
+        ],
+        "answer": 0,
+        "solution": "$dR = R_w\\,dw + R_r\\,dr = k r^{-4}\\,dw + k w(-4r^{-5})\\,dr$."
+      },
+      {
+        "id": "ps5-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "What is the linear approximation to the relative change $dR/R$ in terms of the relative changes $dw/w$ and $dr/r$?",
+        "options": [
+          "$\\dfrac{dR}{R} = \\dfrac{dw}{w} - 4\\dfrac{dr}{r}$",
+          "$\\dfrac{dR}{R} = 4\\dfrac{dr}{r} + \\dfrac{dw}{w}$",
+          "$\\dfrac{dR}{R} = -4\\dfrac{dw}{w} + \\dfrac{dr}{r}$",
+          "$\\dfrac{dR}{R} = \\dfrac{dw}{w} + \\dfrac{dr}{r}$"
+        ],
+        "answer": 0,
+        "solution": "Divide $dR = k(-4wr^{-5}\\,dr + r^{-4}\\,dw)$ by $R = kwr^{-4}$: $\\frac{dR}{R} = \\frac{dw}{w} - 4\\frac{dr}{r}$."
+      },
+      {
+        "id": "ps5-1c",
+        "label": "1c",
+        "type": "mc",
+        "prompt": "For relative changes of similar size, which variable affects $R$ more, and how should their signs be chosen to maximize the relative change?",
+        "options": [
+          "$r$ matters about $4\\times$ more; opposite signs give the largest change",
+          "$w$ matters about $4\\times$ more; same signs give the largest change",
+          "$r$ matters about $4\\times$ more; same signs give the largest change",
+          "Both matter equally; the signs are irrelevant"
+        ],
+        "answer": 0,
+        "solution": "$\\frac{dR}{R} = \\frac{dw}{w} - 4\\frac{dr}{r}$: the $r$ term carries the factor 4, so radius changes dominate. With opposite signs the two terms add in magnitude (e.g. widen $r$ while shrinking $w$ drops resistance the most)."
+      },
+      {
+        "id": "ps5-2",
+        "label": "2",
+        "type": "self",
+        "prompt": "Use the Chain Rule to show that the convective derivative satisfies $\\dfrac{Df}{Dt} = \\dfrac{\\partial f}{\\partial t} + v \\cdot \\nabla f$, where $v = r'(t)$ and $\\nabla f$ is over the space variables only.",
+        "solution": "$\\frac{Df}{Dt} = \\frac{d}{dt}f(x(t),y(t),z(t),t) = f_x\\frac{dx}{dt} + f_y\\frac{dy}{dt} + f_z\\frac{dz}{dt} + \\frac{\\partial f}{\\partial t} = r'(t) \\cdot \\nabla f + \\frac{\\partial f}{\\partial t}$."
+      },
+      {
+        "id": "ps5-3a",
+        "label": "3a",
+        "type": "self",
+        "prompt": "If the density depends only on time, $\\rho = \\rho(t)$, show the flow is incompressible iff $\\rho$ is constant in all variables.",
+        "solution": "Here $\\nabla\\rho = 0$, so $\\frac{D\\rho}{Dt} = \\frac{\\partial\\rho}{\\partial t}$. Incompressible means $\\frac{D\\rho}{Dt} = 0$ iff $\\frac{\\partial\\rho}{\\partial t} = 0$ — i.e. $\\rho$ is constant."
+      },
+      {
+        "id": "ps5-3b",
+        "label": "3b",
+        "type": "mc",
+        "prompt": "For a stratified flow ($\\rho = \\rho(x,y,z)$, no explicit $t$-dependence), what is the condition on $\\rho$ and the velocity field $v$?",
+        "options": [
+          "$v \\cdot \\nabla\\rho = 0$ — velocity is tangent to the constant-density surfaces",
+          "$v \\times \\nabla\\rho = 0$ — velocity is parallel to the density gradient",
+          "$v = \\nabla\\rho$",
+          "$v = 0$ everywhere"
+        ],
+        "answer": 0,
+        "solution": "$\\frac{D\\rho}{Dt} = \\frac{\\partial\\rho}{\\partial t} + v \\cdot \\nabla\\rho$, and $\\frac{\\partial\\rho}{\\partial t} = 0$, so incompressibility is exactly $v \\cdot \\nabla\\rho = 0$: the flow moves along surfaces of constant density."
+      },
+      {
+        "id": "ps5-3c",
+        "label": "3c",
+        "type": "mc",
+        "prompt": "For a 2D stratified steady flow with density varying only with height, $\\rho = \\rho(y)$, what do the streamlines look like?",
+        "options": [
+          "Horizontal — $v$ is always perpendicular to the vertical density gradient, so the flow is layered by density",
+          "Vertical, parallel to $\\nabla\\rho$",
+          "Circles around the origin",
+          "They point toward regions of higher density"
+        ],
+        "answer": 0,
+        "solution": "Here $\\nabla\\rho = (0, \\rho_y)$ is vertical, so $v \\cdot \\nabla\\rho = 0$ forces $v$ to be horizontal: streamlines are level lines, giving the layered ('stratified') structure — like a regular ocean current whose density varies with depth."
+      },
+      {
+        "id": "ps5-4b",
+        "label": "4b",
+        "type": "mc",
+        "prompt": "For $f(x,y) = 4 - x - 4y$, compute the gradient $\\nabla f$.",
+        "options": [
+          "$\\nabla f = (-1, -4)$",
+          "$\\nabla f = (-1, 4)$",
+          "$\\nabla f = (1, 4)$",
+          "$\\nabla f = (-4, -1)$"
+        ],
+        "answer": 0,
+        "solution": "$f_x = -1$, $f_y = -4$, so $\\nabla f = (-1,-4)$."
+      },
+      {
+        "id": "ps5-4c",
+        "label": "4c",
+        "type": "mc",
+        "prompt": "Find the point on the level curve $f(x,y) = 0$ whose position vector is in the gradient direction from the origin.",
+        "options": [
+          "$\\left(\\dfrac{4}{17}, \\dfrac{16}{17}\\right)$",
+          "$(4, 0)$",
+          "$\\left(\\dfrac{16}{17}, \\dfrac{4}{17}\\right)$",
+          "$(1, \\tfrac34)$"
+        ],
+        "answer": 0,
+        "solution": "The line through the origin in the gradient direction is $(x,y) = s(-1,-4)$, so $y = 4x$. The level curve is $x + 4y = 4$; substituting gives $17x = 4$, so $(x,y) = (4/17, 16/17)$."
+      },
+      {
+        "id": "ps5-4d",
+        "label": "4d",
+        "type": "mc",
+        "prompt": "Compute the directional derivative of $f(x,y) = 4 - x - 4y$ in the direction $w = -2i - j$.",
+        "options": [
+          "$\\dfrac{6}{\\sqrt{5}}$",
+          "$-\\dfrac{6}{\\sqrt{5}}$",
+          "$\\dfrac{6}{5}$",
+          "$\\dfrac{2}{\\sqrt{5}}$"
+        ],
+        "answer": 0,
+        "solution": "$\\frac{\\nabla f \\cdot w}{|w|} = \\frac{(-1,-4) \\cdot (-2,-1)}{\\sqrt{5}} = \\frac{2 + 4}{\\sqrt{5}} = \\frac{6}{\\sqrt{5}}$."
+      }
+    ]
+  },
+  "problem-set-6": {
+    "problems": [
+      {
+        "id": "ps6-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "For $f = x^2 - y^2$ and $g = x^2 + y^2$, where are the gradients proportional, and with which $\\lambda$?",
+        "options": [
+          "$\\lambda = 1$ on the $x$-axis (besides the origin); $\\lambda = -1$ on the $y$-axis",
+          "$\\lambda = -1$ on the $x$-axis; $\\lambda = 1$ on the $y$-axis",
+          "$\\lambda = 1$ everywhere on the circle $x^2 + y^2 = b$",
+          "$\\lambda = 0$ at the origin only"
+        ],
+        "answer": 0,
+        "solution": "$\\nabla f = 2(x,-y)$, $\\nabla g = 2(x,y)$; $\\nabla f = \\lambda\\nabla g$ gives $x = \\lambda x$, $-y = \\lambda y$. On the $x$-axis ($y = 0$, $x \\neq 0$): $\\lambda = 1$; on the $y$-axis: $\\lambda = -1$."
+      },
+      {
+        "id": "ps6-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "With constraint $g = x^2 + y^2 = 3$, find the extremal values of $f = x^2 - y^2$ on the circle.",
+        "options": [
+          "max $f = 3$ at $(\\pm\\sqrt{3}, 0)$; min $f = -3$ at $(0, \\pm\\sqrt{3})$",
+          "max $f = -3$ at $(0, \\pm\\sqrt{3})$; min $f = 3$ at $(\\pm\\sqrt{3}, 0)$",
+          "max $f = 3$ at $(0, \\pm\\sqrt{3})$; min $f = 0$ at $(\\pm\\sqrt{3}, 0)$",
+          "All four points give $f = 0$"
+        ],
+        "answer": 0,
+        "solution": "From (a): $\\lambda = 1$ gives the points $(\\pm\\sqrt{3}, 0)$ where $f = x^2 - y^2 = 3$ (max); $\\lambda = -1$ gives $(0, \\pm\\sqrt{3})$ where $f = -3$ (min)."
+      },
+      {
+        "id": "ps6-1c",
+        "label": "1c",
+        "type": "mc",
+        "prompt": "What do the signs of the two $\\lambda$ values tell you about the contact points?",
+        "options": [
+          "At $\\lambda > 0$ the gradients point the same way; at $\\lambda < 0$ they point in opposite directions",
+          "At $\\lambda > 0$ the gradients point opposite ways; at $\\lambda < 0$ the same way",
+          "$\\lambda$ measures the value of $f$ at the contact point",
+          "The sign of $\\lambda$ has no geometric meaning"
+        ],
+        "answer": 0,
+        "solution": "$\\nabla f = \\lambda \\nabla g$: $\\lambda = +1$ at the $x$-axis contacts with $f = 3$ (gradients parallel, same direction); $\\lambda = -1$ at the $y$-axis contacts with $f = -3$ (antiparallel)."
+      },
+      {
+        "id": "ps6-2a",
+        "label": "2a",
+        "type": "mc",
+        "prompt": "Two resistors in parallel: minimize $I_1^2R_1 + I_2^2R_2$ subject to $I_1 + I_2 = I$. What are the currents?",
+        "options": [
+          "$I_1 = \\dfrac{R_2}{R_1 + R_2}\\,I$, $I_2 = \\dfrac{R_1}{R_1 + R_2}\\,I$",
+          "$I_1 = \\dfrac{R_1}{R_1 + R_2}\\,I$, $I_2 = \\dfrac{R_2}{R_1 + R_2}\\,I$",
+          "$I_1 = I_2 = \\dfrac{I}{2}$",
+          "$I_1 = \\dfrac{R_2^2}{R_1^2 + R_2^2}\\,I$, $I_2 = \\dfrac{R_1^2}{R_1^2 + R_2^2}\\,I$"
+        ],
+        "answer": 0,
+        "solution": "Lagrange: $2I_1R_1 = \\lambda = 2I_2R_2$ plus $I_1 + I_2 = I$. So $I_1R_1 = I_2R_2$ — current favors the low-resistance branch, inversely proportional to $R$."
+      },
+      {
+        "id": "ps6-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "Three resistors in parallel: minimize $I_1^2R_1 + I_2^2R_2 + I_3^2R_3$ subject to $I_1 + I_2 + I_3 = I$. Which is the solution?",
+        "options": [
+          "$I_1 = \\dfrac{R_2R_3}{D}I$, $I_2 = \\dfrac{R_1R_3}{D}I$, $I_3 = \\dfrac{R_1R_2}{D}I$, with $D = R_2R_3 + R_1R_3 + R_1R_2$",
+          "$I_1 = I_2 = I_3 = \\dfrac{I}{3}$",
+          "$I_1 = \\dfrac{R_1}{D}I$, $I_2 = \\dfrac{R_2}{D}I$, $I_3 = \\dfrac{R_3}{D}I$, with $D = R_1 + R_2 + R_3$",
+          "$I_1 = \\dfrac{R_1R_2}{D}I$, $I_2 = \\dfrac{R_2R_3}{D}I$, $I_3 = \\dfrac{R_1R_3}{D}I$, with $D = R_2R_3 + R_1R_3 + R_1R_2$"
+        ],
+        "answer": 0,
+        "solution": "All three $I_kR_k$ equal the common $\\lambda/2$, so $I_k \\propto 1/R_k$. Solving with the sum constraint gives $I_1 = \\frac{R_2R_3}{D}I$ and cyclic, with $D = R_2R_3 + R_1R_3 + R_1R_2$."
+      },
+      {
+        "id": "ps6-3a",
+        "label": "3a",
+        "type": "mc",
+        "prompt": "For the triangle with vertices $(0,0)$, $(x,0)$, $(x,y)$, $y = x\\tan\\theta$, $w = \\frac12 xy$. By expressing $w$ in terms of $x, \\theta$, compute $\\frac{\\partial w}{\\partial x}\\Big|_\\theta$ and $\\frac{\\partial w}{\\partial \\theta}\\Big|_x$.",
+        "options": [
+          "$w_x = y$, $w_\\theta = \\tfrac12 x^2 \\sec^2\\theta$",
+          "$w_x = \\tfrac12 x^2 \\sec^2\\theta$, $w_\\theta = y$",
+          "$w_x = \\tfrac12 y$, $w_\\theta = \\tfrac12 x^2 \\sec^2\\theta$",
+          "$w_x = y$, $w_\\theta = x^2 \\sec^2\\theta$"
+        ],
+        "answer": 0,
+        "solution": "$w = \\frac12 x^2 \\tan\\theta$, so $\\frac{\\partial w}{\\partial x} = x\\tan\\theta = y$ and $\\frac{\\partial w}{\\partial\\theta} = \\frac12 x^2\\sec^2\\theta$."
+      },
+      {
+        "id": "ps6-3bcd",
+        "label": "3b–d",
+        "type": "self",
+        "prompt": "Confirm the same two partial derivatives via (b) the chain rule, (c) differentials, and (d) geometric estimates of $\\Delta w/\\Delta x$ and $\\Delta w/\\Delta\\theta$.",
+        "solution": "(b) $\\frac{\\partial w}{\\partial x} = w_x\\frac{\\partial x}{\\partial x} + w_y\\frac{\\partial y}{\\partial x} = \\frac12 y + \\frac12 x\\tan\\theta = y$; $\\frac{\\partial w}{\\partial\\theta} = 0 + \\frac12 x\\, x\\sec^2\\theta = \\frac12 x^2\\sec^2\\theta$. (c) $dw = \\frac12 y\\,dx + \\frac12 x\\,dy$ with $dy = \\tan\\theta\\,dx + x\\sec^2\\theta\\,d\\theta$; collecting $dx$ and $d\\theta$ terms gives the same partials. (d) Fixing $\\theta$: a horizontal strip adds area $\\approx y\\,\\Delta x$, so $\\Delta w/\\Delta x \\to y$. Fixing $x$: a thin wedge adds $\\Delta w \\approx \\frac12 r^2\\Delta\\theta = \\frac12 x^2\\sec^2\\theta\\,\\Delta\\theta$."
+      }
+    ]
+  },
+  "problem-set-7": {
+    "problems": [
+      {
+        "id": "ps7-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "Find the volume of the first-octant solid bounded by the coordinate planes, the plane $x + y = 4$, and the surface $z = \\sqrt{4 - x}$.",
+        "options": [
+          "$\\dfrac{64}{5}$",
+          "$\\dfrac{32}{5}$",
+          "$\\dfrac{16}{5}$",
+          "$\\dfrac{64}{3}$"
+        ],
+        "answer": 0,
+        "solution": "$V = \\int_0^4\\!\\int_0^{4-x}\\sqrt{4-x}\\,dy\\,dx = \\int_0^4 (4-x)^{3/2}\\,dx = \\left[-\\tfrac25(4-x)^{5/2}\\right]_0^4 = \\tfrac{2}{5}\\cdot 32 = \\tfrac{64}{5}$."
+      },
+      {
+        "id": "ps7-2",
+        "label": "2",
+        "type": "self",
+        "prompt": "For a surface of revolution $z = f(r)$ ($\\theta$-independent), show that the polar-coordinates double integral for the volume under the graph equals the single-variable 'shell method' formula.",
+        "solution": "$V = \\iint_R f\\,dA = \\int_0^{2\\pi}\\!\\int_0^a f(r)\\,r\\,dr\\,d\\theta$. Since the limits are constant, swap the order: $V = \\int_0^a \\left(\\int_0^{2\\pi} d\\theta\\right) f(r)\\,r\\,dr = \\int_0^a 2\\pi r f(r)\\,dr$ — exactly the shell-method integral."
+      },
+      {
+        "id": "ps7-3a",
+        "label": "3a",
+        "type": "mc",
+        "prompt": "Find the centroid of a uniform circular sector of radius $a$ with half-angle $\\theta$ (central angle $2\\theta$), centered on the $x$-axis.",
+        "options": [
+          "$\\bar{x} = \\dfrac{2a\\sin\\theta}{3\\theta}$",
+          "$\\bar{x} = \\dfrac{2a\\sin\\theta}{\\theta}$",
+          "$\\bar{x} = \\dfrac{a\\sin\\theta}{3\\theta}$",
+          "$\\bar{x} = \\dfrac{2a\\theta}{3\\sin\\theta}$"
+        ],
+        "answer": 0,
+        "solution": "$\\bar{x} = \\frac{1}{A}\\iint r\\cos\\phi\\;r\\,dr\\,d\\phi$ over $-\\theta \\le \\phi \\le \\theta$, $0 \\le r \\le a$, with area $A = a^2\\theta$. Integrating: $\\bar{x} = \\frac{2a\\sin\\theta}{3\\theta}$ (the factor $f_s = \\frac{2\\sin\\theta}{3\\theta}$ times $a$)."
+      },
+      {
+        "id": "ps7-3c",
+        "label": "3c",
+        "type": "mc",
+        "prompt": "Align a sector and an isoceles triangle (same radius/height $a$, same angle $\\theta$ at the apex). Which centroid is closer to the apex, and why?",
+        "options": [
+          "The sector's — it sits inside the triangle, and the triangle's extra area lies farther from the apex, pulling its centroid outward",
+          "The triangle's — its centroid is at $\\tfrac23 a$, which is closer than the sector's",
+          "They coincide, since both regions have the same angle",
+          "It depends on the value of $\\theta$"
+        ],
+        "answer": 0,
+        "solution": "The triangle's centroid is at $\\frac23 a$ (independent of $\\theta$), while the sector's is at $a\\frac{2\\sin\\theta}{3\\theta}$. Since $\\frac{\\sin\\theta}{\\theta} < 1$, $\\bar{x}_S < \\bar{x}_\\Delta$: the sector's centroid is closer. Physics agrees — the triangle contains the sector plus extra material farther out."
+      },
+      {
+        "id": "ps7-4a",
+        "label": "4a",
+        "type": "mc",
+        "prompt": "Flow A: $\\phi(x,y,t) = ((1+t)x, (1+t)y)$. What is its Jacobian $J(x,y,t)$?",
+        "options": [
+          "$(1+t)^2$",
+          "$1+t$",
+          "$1$",
+          "$(1+t)^{-1}$"
+        ],
+        "answer": 0,
+        "solution": "$J = \\det\\begin{pmatrix} 1+t & 0 \\\\ 0 & 1+t \\end{pmatrix} = (1+t)^2$, so $A(R_t) = (1+t)^2A(R)$ — the flow dilates areas (not area-preserving)."
+      },
+      {
+        "id": "ps7-4b",
+        "label": "4b",
+        "type": "mc",
+        "prompt": "Which of the flows A, B, C are area-preserving (\"volume-incompressible\" in 2D)?",
+        "options": [
+          "B and C",
+          "A only",
+          "All three",
+          "None of them"
+        ],
+        "answer": 0,
+        "solution": "Case B (rotation): $J = \\cos^2 t + \\sin^2 t = 1$. Case C (stretch $x$, compress $y$): $J = (1+t)\\cdot\\frac{1}{1+t} = 1$. Case A: $J = (1+t)^2 \\neq 1$ — not area-preserving."
+      },
+      {
+        "id": "ps7-5b",
+        "label": "5b",
+        "type": "mc",
+        "prompt": "Describe the flow in case B: $\\phi = (x\\cos t - y\\sin t,\\; x\\sin t + y\\cos t)$.",
+        "options": [
+          "A pure counterclockwise rotation about the origin at constant angular speed $1$ rad per unit time",
+          "A radial expansion from the origin that speeds up with distance",
+          "A shear flow parallel to the $x$-axis",
+          "A hyperbolic flow along the axes"
+        ],
+        "answer": 0,
+        "solution": "Flow lines are circles centered at $O$; $v = (-x\\sin t - y\\cos t,\\; x\\cos t - y\\sin t)$ has $|v| = r$, so the angular velocity is $\\omega = |v|/r = 1$ — rigid rotation counterclockwise."
+      },
+      {
+        "id": "ps7-5c",
+        "label": "5c",
+        "type": "mc",
+        "prompt": "Describe the flow lines in case C: $\\phi = ((1+t)x,\\; \\tfrac{1}{1+t}y)$.",
+        "options": [
+          "Hyperbolas $XY = xy = $ constant, with the coordinate axes as asymptotes",
+          "Circles centered at the origin",
+          "Straight lines through the origin",
+          "Parabolas opening along the $x$-axis"
+        ],
+        "answer": 0,
+        "solution": "$X = (1+t)x$ and $Y = y/(1+t)$ multiply to $XY = xy$: the flow runs along hyperbolas—material streams in from the $y$-axis and out along the $x$-axis (area is preserved)."
+      }
+    ]
+  },
+  "problem-set-8": {
+    "problems": [
+      {
+        "id": "ps8-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "Write, in $xy$-coordinates, the vector field $F$ whose vector at $P = (x,y)$ runs vertically from $P$ to the line $L: x + y = 1$.",
+        "options": [
+          "$F = (1 - x - y)\\,j$",
+          "$F = (1 - x - y)\\,i$",
+          "$F = (x + y - 1)\\,j$",
+          "$F = j$"
+        ],
+        "answer": 0,
+        "solution": "The point on $L$ directly above $(x,y)$ is $(x, 1-x)$, so the vector from $P$ up to $L$ is $(0, (1-x) - y) = (1-x-y)j$."
+      },
+      {
+        "id": "ps8-2a",
+        "label": "2a",
+        "type": "mc",
+        "prompt": "For $F = -\\dfrac{xi + yj}{x^2 + y^2}$, find the work done along the half-line $y = 1$, $x \\ge 0$.",
+        "options": [
+          "$-\\infty$ (the integral diverges)",
+          "$0$",
+          "$-\\ln 2$",
+          "$-1$"
+        ],
+        "answer": 0,
+        "solution": "On the path, $F \\cdot dr = -\\frac{x}{x^2+1}\\,dx$; $\\int_0^\\infty -\\frac{x}{x^2+1}\\,dx = \\left[-\\tfrac12\\ln(x^2+1)\\right]_0^\\infty = -\\infty$ — the work diverges as $x \\to \\infty$."
+      },
+      {
+        "id": "ps8-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "Same field: find the work around the circle of radius $a$ centered at the origin, traced counterclockwise.",
+        "options": [
+          "$0$",
+          "$-2\\pi$",
+          "$-\\ln a$",
+          "$-\\infty$"
+        ],
+        "answer": 0,
+        "solution": "On the circle $F$ points radially inward while $dr$ is tangent, so $F \\cdot dr = 0$ at every point: the work is $0$."
+      },
+      {
+        "id": "ps8-2c",
+        "label": "2c",
+        "type": "mc",
+        "prompt": "Same field: find the work along the line segment from $(0,1)$ to $(1,0)$.",
+        "options": [
+          "$0$",
+          "$-\\ln 2$",
+          "$-2\\pi$",
+          "$\\ln\\sqrt{2}$"
+        ],
+        "answer": 0,
+        "solution": "Parametrize $x = t$, $y = 1-t$: $F \\cdot dr = -\\frac{2t-1}{2t^2 - 2t + 1}\\,dt = -\\frac12\\,d\\ln(2t^2 - 2t + 1)$, which integrates to $-\\frac12\\left[\\ln 1 - \\ln 1\\right] = 0$."
+      },
+      {
+        "id": "ps8-3a",
+        "label": "3a",
+        "type": "self",
+        "prompt": "Show that $F = -\\nabla(\\ln r)$ is the field of problem 2 (with $c = 1$).",
+        "solution": "$r = \\sqrt{x^2+y^2}$, so $\\frac{\\partial r}{\\partial x} = \\frac{x}{r}$, $\\frac{\\partial r}{\\partial y} = \\frac{y}{r}$. Then $\\nabla \\ln r = \\left(\\frac{1}{r}\\cdot\\frac{x}{r}, \\frac{1}{r}\\cdot\\frac{y}{r}\\right) = \\left(\\frac{x}{x^2+y^2}, \\frac{y}{x^2+y^2}\\right)$, so $-\\nabla\\ln r = -\\frac{xi+yj}{x^2+y^2} = F$."
+      },
+      {
+        "id": "ps8-3b",
+        "label": "3b",
+        "type": "mc",
+        "prompt": "Show that $\\int_C F \\cdot dr$ for a path from $P_1$ to $P_2$ depends only on the ratio $r_2/r_1$. What is its value?",
+        "options": [
+          "$-\\ln(r_2/r_1)$",
+          "$\\ln(r_2/r_1)$",
+          "$-(r_2 - r_1)$",
+          "$r_2/r_1$"
+        ],
+        "answer": 0,
+        "solution": "$F = -\\nabla\\ln r$ is a gradient field, so the Fundamental Theorem for line integrals gives $\\int_C F\\cdot dr = -\\ln r\\,\\Big|_{P_1}^{P_2} = -(\\ln r_2 - \\ln r_1) = -\\ln\\!\\left(\\frac{r_2}{r_1}\\right)$."
+      },
+      {
+        "id": "ps8-4a",
+        "label": "4a",
+        "type": "mc",
+        "prompt": "For $F = \\nabla(x^2y + 2xy^2)$, write $\\int_C F\\cdot dr$ in the form $\\int_C M\\,dx + N\\,dy$.",
+        "options": [
+          "$M = 2xy + 2y^2$, $N = x^2 + 4xy$",
+          "$M = x^2 + 4xy$, $N = 2xy + 2y^2$",
+          "$M = 2xy + 2y^2$, $N = x^2 - 4xy$",
+          "$M = 2x + 2y^2$, $N = x^2 + 4xy$"
+        ],
+        "answer": 0,
+        "solution": "$f = x^2y + 2xy^2$, so $M = f_x = 2xy + 2y^2$ and $N = f_y = x^2 + 4xy$."
+      },
+      {
+        "id": "ps8-4cd",
+        "label": "4c–d",
+        "type": "mc",
+        "prompt": "Use the Fundamental Theorem (or path independence) to compute $\\int_C F \\cdot dr$ for the quarter ellipse $9x^2 + 4y^2 = 1$ from the positive $x$-axis to the positive $y$-axis.",
+        "options": [
+          "$0$",
+          "$\\dfrac16$",
+          "$\\dfrac12$",
+          "$-\\dfrac{2}{9}$"
+        ],
+        "answer": 0,
+        "solution": "The ellipse runs from $(1/3, 0)$ to $(0, 1/2)$. Only the endpoints matter: $f(0,\\tfrac12) - f(\\tfrac13, 0) = 0 - 0 = 0$. Along the axes alternative path both terms vanish, confirming $0$."
+      },
+      {
+        "id": "ps8-5a",
+        "label": "5a",
+        "type": "mc",
+        "prompt": "Show that $F = xy\\,i + x^3\\,j$ is not conservative.",
+        "options": [
+          "$\\text{curl }F = (3x^2 - x)\\,k \\neq 0$",
+          "$\\text{curl }F = 0$, but $F$ has no potential",
+          "$\\text{div }F \\neq 0$, so $F$ is not conservative",
+          "$\\partial P/\\partial y = \\partial Q/\\partial x$, so $F$ is not conservative"
+        ],
+        "answer": 0,
+        "solution": "With $P = xy$, $Q = x^3$: curl $F = (Q_x - P_y)k = (3x^2 - x)k$, which is nonzero (e.g. at $x = 1$) — a gradient field would need zero curl everywhere."
+      },
+      {
+        "id": "ps8-5bc",
+        "label": "5b–c",
+        "type": "self",
+        "prompt": "Attempt to build a potential function for $F = xy\\,i + x^3\\,j$ by the two reading methods (path integration; and integrating $f_x$, then matching $f_y$). What goes wrong?",
+        "solution": "Method 1 (path integration): pretending $F = \\nabla f$, integrating along an axis path gives $f(x,y) = \\int_0^y x^3\\,dy = x^3y$. But $\\nabla(x^3y) = (3x^2y, x^3) \\neq (xy, x^3)$ — no potential exists. Method 2: $f_x = xy \\Rightarrow f = \\frac{x^2y}{2} + g(y)$; then $f_y = \\frac{x^2}{2} + g'(y)$ would have to equal $x^3$, i.e. $g'(y) = x^3 - \\frac{x^2}{2}$ — impossible, since the right side depends on $x$ but $g'$ cannot."
+      }
+    ]
+  },
+  "problem-set-10": {
+    "problems": [
+      {
+        "id": "ps10-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "The solid $G$ lies inside the cylinder $x^2 + (y-1)^2 = 1$, above $z = 0$, below $z = \\sqrt{x^2+y^2}$. Find its volume.",
+        "options": [
+          "$\\dfrac{32}{9}$",
+          "$\\dfrac{16}{3}$",
+          "$\\dfrac{8}{3}$",
+          "$\\dfrac{16}{9}$"
+        ],
+        "answer": 0,
+        "solution": "In cylindrical coordinates the base is $0 \\le r \\le 2\\sin\\theta$, $0 \\le \\theta \\le \\pi$, with $z$ from $0$ to $r$: $V = \\int_0^{\\pi}\\!\\int_0^{2\\sin\\theta} r \\cdot r\\,dr\\,d\\theta = \\int_0^{\\pi} \\frac{8\\sin^3\\theta}{3}\\,d\\theta = \\frac{8}{3}\\cdot\\frac{4}{3} = \\frac{32}{9}$."
+      },
+      {
+        "id": "ps10-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "Find the $z$-coordinate of the centroid of $G$ (same solid).",
+        "options": [
+          "$\\dfrac{27\\pi}{128}$",
+          "$\\dfrac{32}{9\\pi}$",
+          "$\\dfrac{27}{128}$",
+          "$\\dfrac{3\\pi}{8}$"
+        ],
+        "answer": 0,
+        "solution": "$\\bar z = \\frac1V\\int z\\,dV = \\frac1V\\int_0^{\\pi}\\!\\int_0^{2\\sin\\theta}\\!\\int_0^{r} z\\,r\\,dz\\,dr\\,d\\theta = \\frac{1}{32/9}\\cdot\\frac{3\\pi}{4} = \\frac{27\\pi}{128} \\approx 0.66$ — roughly a third of the solid's max height $2$."
+      },
+      {
+        "id": "ps10-2b",
+        "label": "2b",
+        "type": "mc",
+        "prompt": "The solid $G$ is given by $0 \\le z \\le \\sqrt{4-x^2}$, $0 \\le y \\le 2x$, $0 \\le x \\le 2$. Which iterated integral uses the order $dy\\,dx\\,dz$?",
+        "options": [
+          "$\\displaystyle\\int_0^2\\!\\!\\int_0^{\\sqrt{4-z^2}}\\!\\!\\int_0^{2x} f\\,dy\\,dx\\,dz$",
+          "$\\displaystyle\\int_0^2\\!\\!\\int_0^{2x}\\!\\!\\int_0^{\\sqrt{4-z^2}} f\\,dy\\,dx\\,dz$",
+          "$\\displaystyle\\int_0^2\\!\\!\\int_0^{\\sqrt{4-x^2}}\\!\\!\\int_0^{2x} f\\,dy\\,dx\\,dz$",
+          "$\\displaystyle\\int_0^2\\!\\!\\int_0^2\\!\\!\\int_0^{2x} f\\,dy\\,dx\\,dz$"
+        ],
+        "answer": 0,
+        "solution": "Redescribe $G$: $0 \\le z \\le 2$, and for each $z$, $0 \\le x \\le \\sqrt{4-z^2}$ (from $z \\le \\sqrt{4-x^2}$), then $0 \\le y \\le 2x$."
+      },
+      {
+        "id": "ps10-2d",
+        "label": "2d",
+        "type": "mc",
+        "prompt": "Take $f = 1$ in the integral $\\int_0^2\\!\\int_0^{2x}\\!\\int_0^{\\sqrt{4-x^2}} dz\\,dy\\,dx$ (i.e., the volume of $G$).",
+        "options": [
+          "$\\dfrac{16}{3}$",
+          "$\\dfrac{8}{3}$",
+          "$\\dfrac{32}{3}$",
+          "$4$"
+        ],
+        "answer": 0,
+        "solution": "$\\int_0^2 2x\\sqrt{4-x^2}\\,dx = \\left[-\\frac23(4-x^2)^{3/2}\\right]_0^2 = \\frac{16}{3}$. The orders in (b) give the same value $16/3$."
+      },
+      {
+        "id": "ps10-3",
+        "label": "3",
+        "type": "mc",
+        "prompt": "A parabolic-trough reservoir has cross-section $z = \\frac{x^4}{100}$ for $0 \\le z \\le 81$ m, length $200$ m. Taking $\\rho = 10^3\\ \\text{kg/m}^3$, how much potential energy can be stored by filling it (water initially at $z=0$, $g = 9.8$)?",
+        "options": [
+          "about $5.14 \\times 10^{10}$ J",
+          "about $5.14 \\times 10^{7}$ J",
+          "about $1.62 \\times 10^{11}$ J",
+          "about $5.14 \\times 10^{8}$ J"
+        ],
+        "answer": 0,
+        "solution": "Energy $= \\rho g\\int z\\,dV$, with $dV = 200\\,dx\\,dz$ and $z$ from $x^4/100$ to $81$ as $x$ runs $0$ to $10^{1/2}\\cdot 81^{1/4} = 3\\sqrt{10}$. Numerically this gives $\\approx 5.14\\times 10^{10}$ J."
+      }
+    ]
+  },
+  "problem-set-11": {
+    "problems": [
+      {
+        "id": "ps11-1",
+        "label": "1",
+        "type": "mc",
+        "prompt": "Show that the average straight-line distance to a fixed point on the surface of a sphere of radius $a$ is:",
+        "options": [
+          "$\\dfrac{4a}{3}$",
+          "$a$",
+          "$\\dfrac{3a}{4}$",
+          "$a\\sqrt{2}$"
+        ],
+        "answer": 0,
+        "solution": "Center the sphere at $O$, let $N$ be the north pole, and let $P$ subtend polar angle $\\phi$. The Law of Cosines in triangle $ONP$ gives $D = a\\sqrt{2(1-\\cos\\phi)}$. Averaging over the sphere: $\\bar D = \\frac{1}{4\\pi a^2}\\int_S D\\,dS = \\frac{4a}{3}$."
+      },
+      {
+        "id": "ps11-2",
+        "label": "2",
+        "type": "mc",
+        "prompt": "Ice-cream cone: sphere of radius $a$ centered at the origin, cone with vertex at the origin, vertex angle $2\\phi_0$, density $1$. Find the gravitational force on a unit test mass at the origin.",
+        "options": [
+          "$\\vec F = (0,\\, 0,\\, G\\pi a \\sin^2\\phi_0)$",
+          "$\\vec F = (0,\\, 0,\\, G\\pi a \\cos^2\\phi_0)$",
+          "$\\vec F = (0,\\, 0,\\, G\\pi a \\sin\\phi_0)$",
+          "$\\vec F = 0$ by symmetry"
+        ],
+        "answer": 0,
+        "solution": "By symmetry only the $z$-component survives: $F_z = G\\int \\rho\\cos\\phi\\,d\\rho\\,d\\phi\\,d\\theta$ over $0 \\le \\rho \\le a$, $0 \\le \\phi \\le \\phi_0$ gives $G \\cdot a\\frac{\\sin^2\\phi_0}{2}\\cdot 2\\pi = G\\pi a \\sin^2\\phi_0$, pointing along $+z$."
+      },
+      {
+        "id": "ps11-3a",
+        "label": "3a",
+        "type": "mc",
+        "prompt": "Now $a = \\sqrt{2}$, $\\phi_0 = \\pi/4$, and $F = z\\,k$. Let $T$ be the horizontal disk whose boundary is the intersection of the sphere and the cone. What is the upward flux of $F$ through $T$?",
+        "options": [
+          "$\\pi$",
+          "$2\\pi$",
+          "$\\pi/2$",
+          "$1$"
+        ],
+        "answer": 0,
+        "solution": "The intersection is the circle $r = 1$ at height $z = 1$, so $T$ is the unit disk at $z = 1$ with $n = k$. There $F \\cdot n = z = 1$, so the flux is the area: $\\pi$."
+      },
+      {
+        "id": "ps11-3b",
+        "label": "3b",
+        "type": "mc",
+        "prompt": "Let $S$ be the upper spherical cap and $U$ the conical lower surface (upward normals). Use the divergence theorem to find the fluxes through $S$ and $U$.",
+        "options": [
+          "through $S$: $\\dfrac{4\\pi\\sqrt{2}}{3} - \\dfrac{2\\pi}{3}$; through $U$: $\\dfrac{2\\pi}{3}$",
+          "through $S$: $\\dfrac{4\\pi\\sqrt{2}}{3} - \\dfrac{5\\pi}{3}$; through $U$: $\\dfrac{2\\pi}{3}$",
+          "through $S$: $\\dfrac{2\\pi}{3}$; through $U$: $\\dfrac{4\\pi\\sqrt{2}}{3} - \\dfrac{2\\pi}{3}$",
+          "through $S$: $2\\pi$; through $U$: $0$"
+        ],
+        "answer": 0,
+        "solution": "With $div F = 1$: flux through $S$ $-$ flux through $T$ $=$ volume($D_1$), where $D_1$ (between cap and disk) has volume $\\frac{4\\pi\\sqrt{2}}{3} - \\frac{5\\pi}{3}$; so flux$_S = \\frac{4\\pi\\sqrt{2}}{3} - \\frac{5\\pi}{3} + \\pi$. Similarly flux through $U$ $= \\pi - $ volume($D_2$) $= \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$."
+      },
+      {
+        "id": "ps11-3c",
+        "label": "3c",
+        "type": "mc",
+        "prompt": "Set up (do not compute) the flux of $F$ through $U$ in cylindrical coordinates.",
+        "options": [
+          "$\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^1 r^2\\,dr\\,d\\theta$",
+          "$\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^1 r\\,dr\\,d\\theta$",
+          "$\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^1 1\\,dr\\,d\\theta$",
+          "$\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^{\\sqrt{2}} r^2\\,dr\\,d\\theta$"
+        ],
+        "answer": 0,
+        "solution": "$U$ is $z = r$ with normal $(-z_x, -z_y, 1)\\,dx\\,dy$, so $F \\cdot n\\,dS = z\\,dx\\,dy = r \\cdot r\\,dr\\,d\\theta$ over the unit disk."
+      },
+      {
+        "id": "ps11-4a",
+        "label": "4a",
+        "type": "mc",
+        "prompt": "For $f = 1/\\rho$ (with $\\rho = |r|$), compute $F = \\nabla f$ and div $F$.",
+        "options": [
+          "$F = -\\dfrac{(x,\\,y,\\,z)}{\\rho^3}$, and $\\operatorname{div}F = 0$",
+          "$F = -\\dfrac{(x,\\,y,\\,z)}{\\rho^3}$, and $\\operatorname{div}F = -\\dfrac{3}{\\rho^3}$",
+          "$F = \\dfrac{(x,\\,y,\\,z)}{\\rho^3}$, and $\\operatorname{div}F = 0$",
+          "$F = -\\dfrac{(x,\\,y,\\,z)}{\\rho^2}$, and $\\operatorname{div}F = 0$"
+        ],
+        "answer": 0,
+        "solution": "$\\partial_x \\rho^{-1} = -x\\rho^{-3}$, etc., so $F = -(x,y,z)/\\rho^3$. Then $\\operatorname{div}F = 3(-\\rho^{-3} + \\rho^2\\rho^{-5}) = 0$ for $\\rho > 0$."
+      },
+      {
+        "id": "ps11-4b",
+        "label": "4b",
+        "type": "mc",
+        "prompt": "Find the outward flux of $F$ through the sphere of radius $a$ centered at the origin, and explain why this does not contradict the divergence theorem.",
+        "options": [
+          "The flux is $-4\\pi$; the theorem does not apply because $F$ is not defined at the origin",
+          "The flux is $0$, consistent with div $F = 0$",
+          "The flux is $-4\\pi$; this shows div $F \\neq 0$ somewhere inside",
+          "The flux is $4\\pi$; the sign follows from the outward normal"
+        ],
+        "answer": 0,
+        "solution": "On the sphere, $n = (x,y,z)/a$ and $F = -(x,y,z)/a^3$, so $F \\cdot n = -1/a^2$ and the flux $= -\\frac{1}{a^2}\\cdot 4\\pi a^2 = -4\\pi$. div $F = 0$ everywhere it is defined, but $F$ blows up at the origin, so the divergence theorem's hypotheses fail."
+      },
+      {
+        "id": "ps11-4c",
+        "label": "4c",
+        "type": "self",
+        "prompt": "Use the extended divergence theorem (punch a small sphere around the origin) to show that the flux of $F$ through any closed surface surrounding the origin is $-4\\pi$.",
+        "solution": "Let $S$ surround the origin and let $S_1$ be a small sphere inside $S$ around $O$. The region $D$ between them excludes the origin, so the divergence theorem gives $\\iint_S F\\cdot n\\,dS - \\iint_{S_1} F \\cdot n\\,dS = \\iiint_D \\operatorname{div}F\\,dV = 0$. Hence the flux through $S$ equals the flux through $S_1$, which is $-4\\pi$ (part b) — independent of the surface's shape."
+      },
+      {
+        "id": "ps11-5",
+        "label": "5",
+        "type": "self",
+        "prompt": "If $S$ is the iso-surface $f = c$ enclosing $G$, use the Divergence Theorem to show $\\iint_S |\\nabla f|\\,dS = \\pm \\iiint_G \\nabla^2 f\\,dV$.",
+        "solution": "$\\nabla f$ is perpendicular to $S$, so $\\nabla f \\cdot n = \\pm|\\nabla f|$ (sign depending on whether $\\nabla f$ points out of or into $S$). Apply the divergence theorem to the field $\\nabla f$: $\\iint_S \\nabla f \\cdot n\\,dS = \\iiint_G \\operatorname{div}(\\nabla f)\\,dV = \\iiint_G \\nabla^2 f\\,dV$. Substituting $\\nabla f \\cdot n = \\pm|\\nabla f|$ gives the identity."
+      }
+    ]
+  },
+  "problem-set-12": {
+    "problems": [
+      {
+        "id": "ps12-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "For $F = -\\dfrac{z}{x^2+z^2}\\,i + y\\,j + \\dfrac{x}{x^2+z^2}\\,k$ (defined off the $y$-axis), compute $\\nabla \\times F$.",
+        "options": [
+          "$\\nabla \\times F = 0$ for all $x^2 + z^2 > 0$",
+          "$\\nabla \\times F = \\dfrac{2}{x^2+z^2}\\,k$",
+          "$\\nabla \\times F$ is nonzero along the $y$-axis only",
+          "$\\nabla \\times F$ is undefined"
+        ],
+        "answer": 0,
+        "solution": "Writing $S = x^2+z^2$: the $j$-component is $\\partial_z(-z/S) - \\partial_x(x/S) = \\frac{2z^2 - S}{S^2} - \\frac{2x^2 - S}{S^2}$... both equal $(z^2-x^2)/S^2$ and cancel; the $i,k$ components vanish because $F$ has no $y$-dependence. So curl $F = 0$ wherever $F$ is defined."
+      },
+      {
+        "id": "ps12-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "Compute $\\oint_{C_1} F\\cdot dr$ directly, where $C_1$ is $x^2 + y^2 = 1$, $z = 1$.",
+        "options": [
+          "$0$",
+          "$2\\pi$",
+          "$-2\\pi$",
+          "$\\pi$"
+        ],
+        "answer": 0,
+        "solution": "On $C_1$: $x = \\cos t$, $y = \\sin t$, $z = 1$, so $P = -\\frac{1}{1+\\cos^2 t}$ and $Q = \\sin t$. Then $\\oint P\\,dx + Q\\,dy = \\int_0^{2\\pi}\\left[\\frac{\\sin t}{1+\\cos^2 t} + \\sin t\\cos t\\right]dt = 0$ — each term integrates to zero over a full period."
+      },
+      {
+        "id": "ps12-1cd",
+        "label": "1c–d",
+        "type": "mc",
+        "prompt": "Can Stokes' Theorem be used to conclude $\\oint_{C_2} F \\cdot dr = 0$ for the curve $x^2 + z^2 = 1$, $y = 0$? And what is the integral?",
+        "options": [
+          "No — any capping surface for $C_2$ must meet the $y$-axis where $F$ is undefined; the direct computation gives $2\\pi$",
+          "Yes — since curl $F = 0$, the integral is $0$",
+          "No — because curl $F \\neq 0$ along $C_2$; the integral is $2\\pi$",
+          "Yes — by path independence the integral is $2\\pi$"
+        ],
+        "answer": 0,
+        "solution": "$C_2$ is the unit circle in the $xz$-plane around the $y$-axis. Every surface spanning $C_2$ crosses the $y$-axis (where the field is undefined), so Stokes' hypothesis fails. Directly: $x = \\cos t$, $z = \\sin t$, $y = 0$ gives $\\int_0^{2\\pi}(\\sin^2 t + \\cos^2 t)\\,dt = 2\\pi \\neq 0$ — a gradient-like field on a non-simply-connected domain."
+      },
+      {
+        "id": "ps12-2ab",
+        "label": "2a–b",
+        "type": "mc",
+        "prompt": "For $G = \\dfrac{(x,\\,y,\\,z)}{x^2+y^2+z^2}$ (defined off the origin), show curl $G = 0$ and decide whether Stokes' Theorem forces $\\oint_C G\\cdot dr = 0$ for every simple closed curve avoiding the origin.",
+        "options": [
+          "curl $G = 0$, and yes — a capping surface avoiding the origin always exists, so the integral vanishes",
+          "curl $G = 0$, but Stokes never applies because $G$ is undefined at the origin",
+          "curl $G \\neq 0$, so the integral need not vanish",
+          "curl $G = 0$, and the integral equals $4\\pi$ for every curve"
+        ],
+        "answer": 0,
+        "solution": "Each component is of the form $x/r^2$ with paired derivatives that cancel (e.g. $\\partial_y(z/r^2) = -2zy/r^4 = \\partial_z(y/r^2)$), so curl $G = 0$ for $r>0$. Since a curve avoiding the origin can be capped by a surface avoiding the origin, Stokes gives $\\oint_C G\\cdot dr = 0$."
+      },
+      {
+        "id": "ps12-2c",
+        "label": "2c",
+        "type": "mc",
+        "prompt": "Explain the difference between the two cases ($F$ off the $y$-axis vs. $G$ off the origin) in terms of connectedness.",
+        "options": [
+          "$\\mathbb{R}^3$ minus the $y$-axis is not simply connected (curves around the axis can't be shrunk to a point); $\\mathbb{R}^3$ minus a point is simply connected",
+          "Both domains are simply connected, so the difference is numerical",
+          "$\\mathbb{R}^3$ minus the $y$-axis is simply connected; $\\mathbb{R}^3$ minus a point is not",
+          "Neither domain is simply connected"
+        ],
+        "answer": 0,
+        "solution": "A loop encircling the removed line cannot be contracted without crossing it — so curl $= 0$ does not imply path independence there. Removing a point leaves every loop contractible (in 3D), which is why curl $G = 0$ does give $\\oint = 0$ for curves avoiding the origin."
+      },
+      {
+        "id": "ps12-3ab",
+        "label": "3a–b",
+        "type": "mc",
+        "prompt": "The non-steady flow $F = (z\\sin t)\\,i - (z\\cos t)\\,j + (-x\\sin t + y\\cos t)\\,k$ with $\\rho = 1$. Verify the continuity equation, and state the net outward flux through any closed surface.",
+        "options": [
+          "$\\operatorname{div}F = 0$ and $\\partial\\rho/\\partial t = 0$, so $\\partial_t\\rho + \\operatorname{div}F = 0$ holds; the net outward flux through any closed surface is $0$",
+          "$\\operatorname{div}F = 1$, balanced by $\\partial_t\\rho = -1$; the flux is $4\\pi$",
+          "The continuity equation holds only at $t = 0$; the flux is $2\\pi$",
+          "$\\partial_t\\rho + \\operatorname{div}F = 1 \\neq 0$; the flux is nonzero"
+        ],
+        "answer": 0,
+        "solution": "$\\partial_x(z\\sin t) + \\partial_y(-z\\cos t) + \\partial_z(-x\\sin t + y\\cos t) = 0$, and $\\rho = 1$ is constant. div $F = 0$ at every time, so by the divergence theorem the flux through any closed surface is $0$."
+      },
+      {
+        "id": "ps12-4a",
+        "label": "4a",
+        "type": "mc",
+        "prompt": "Compute the curl of the flow field $F = (z\\sin t)\\,i - (z\\cos t)\\,j + (-x\\sin t + y\\cos t)\\,k$.",
+        "options": [
+          "$\\nabla \\times F = 2(\\cos t,\\, \\sin t,\\, 0)$",
+          "$\\nabla \\times F = (\\cos t,\\, \\sin t,\\, 0)$",
+          "$\\nabla \\times F = 2(-\\sin t,\\, \\cos t,\\, 0)$",
+          "$\\nabla \\times F = 0$"
+        ],
+        "answer": 0,
+        "solution": "$\\nabla \\times F = i(2\\cos t) + j(2\\sin t) + k(0) = 2(\\cos t, \\sin t, 0) = 2n_t$."
+      },
+      {
+        "id": "ps12-4b",
+        "label": "4b",
+        "type": "mc",
+        "prompt": "At any fixed time $t$ and point, what axial direction gives the maximum angular velocity of the flow, and what is that angular velocity?",
+        "options": [
+          "the axis $\\hat n_t = (\\cos t,\\, \\sin t,\\, 0)$; maximum angular velocity $\\omega = 1$",
+          "the axis $\\hat n_t = (\\cos t,\\, \\sin t,\\, 0)$; maximum angular velocity $\\omega = 2$",
+          "the $z$-axis; maximum angular velocity $\\omega = 1$",
+          "the axis $\\hat n_t$; maximum angular velocity $\\omega = 1/2$"
+        ],
+        "answer": 0,
+        "solution": "The maximal angular velocity is half the curl magnitude, and the axis is along curl $F$: $\\omega_{max} = |\\nabla \\times F|/2 = 2/2 = 1$ rad per unit time about $\\hat n_t = (\\cos t, \\sin t, 0)$ — the same at every point (rigid rotation in the plane $P_t$)."
+      },
+      {
+        "id": "ps12-4ce",
+        "label": "4c–e",
+        "type": "self",
+        "prompt": "Show that (i) the velocity vectors lie in the plane $P_t$ through the origin with normal $n_t = (\\cos t, \\sin t, 0)$, and (ii) they are perpendicular to the radial vector $(x,y,z)$. Then describe the motion of the flow.",
+        "solution": "(i) $n_t \\cdot v = \\cos t\\,z\\sin t - \\sin t\\,z\\cos t + 0 = 0$. (ii) $v \\cdot r = xz\\sin t - yz\\cos t + z(-x\\sin t + y\\cos t) = 0$. So at each time the flow is a rigid rotation at $1$ rad/unit time inside the plane $P_t$ (the plane of greatest spin), while $P_t$ itself rotates around the $z$-axis as $t$ advances — producing a swirling motion in 3-space."
+      }
+    ]
+  },
+  "problem-set-9": {
+    "problems": [
+      {
+        "id": "ps9-1a",
+        "label": "1a",
+        "type": "mc",
+        "prompt": "For $F = (y^3 - 6y)\\,i + (6x - x^3)\\,j$, use Green's Theorem to find the simple closed curve $C$ (positively oriented) for which $\\oint_C F \\cdot dr$ is largest.",
+        "options": [
+          "The circle $x^2 + y^2 = 4$, traversed counterclockwise",
+          "The circle $x^2 + y^2 = 12$, traversed counterclockwise",
+          "The circle $x^2 + y^2 = 2$, traversed counterclockwise",
+          "The boundary of the square with vertices $(\\pm 4, \\pm 4)$"
+        ],
+        "answer": 0,
+        "solution": "$\\oint_C F\\cdot dr = \\iint_R (Q_x - P_y)\\,dA = \\iint_R (12 - 3x^2 - 3y^2)\\,dA$. The integrand is positive exactly where $x^2+y^2 < 4$ and negative outside, so the integral is maximized by taking $R$ to be the disk of radius $2$ — i.e. $C$ is its counterclockwise boundary."
+      },
+      {
+        "id": "ps9-1b",
+        "label": "1b",
+        "type": "mc",
+        "prompt": "Compute the largest value of that integral.",
+        "options": [
+          "$24\\pi$",
+          "$12\\pi$",
+          "$8\\pi$",
+          "$48\\pi$"
+        ],
+        "answer": 0,
+        "solution": "$\\iint_D (12 - 3r^2)\\,dA = \\int_0^{2\\pi}\\!\\int_0^2 (12 - 3r^2)\\,r\\,dr\\,d\\theta = 2\\pi\\left[6r^2 - \\frac{3r^4}{4}\\right]_0^2 = 2\\pi(24 - 12) = 24\\pi$."
+      },
+      {
+        "id": "ps9-2a",
+        "label": "2a",
+        "type": "self",
+        "prompt": "Explain why the equation of continuity $\\partial_t\\rho + \\operatorname{div}(\\rho v) = 0$ is a statement of conservation of mass.",
+        "solution": "Integrate over any bounded region $R$: $\\frac{d}{dt}\\iint_R \\rho\\,dA + \\iint_R \\operatorname{div}(F)\\,dA = 0$ with $F = \\rho v$. The first term is the rate of change of the mass in $R$; by Green's theorem in normal form the second equals the net outward mass flux $\\oint_C F \\cdot \\hat n\\,ds$. So the equation says $\\frac{dM}{dt} = -(\\text{mass leaving through } C)$ — mass is neither created nor destroyed."
+      },
+      {
+        "id": "ps9-2bc",
+        "label": "2b–c",
+        "type": "self",
+        "prompt": "Show $\\operatorname{div}(gG) = g\\operatorname{div}(G) + G\\cdot\\nabla g$, and use it to prove the flow $F = \\rho v$ is incompressible iff $\\operatorname{div}v = 0$.",
+        "solution": "(b) Product rule on each component: $\\partial_x(gM) + \\partial_y(gN) = (g_xM + g_yN) + g(M_x + N_y) = G \\cdot \\nabla g + g\\operatorname{div}G$. (c) $\\partial_t\\rho + \\operatorname{div}(\\rho v) = \\partial_t\\rho + v\\cdot\\nabla\\rho + \\rho\\operatorname{div}v = \\frac{D\\rho}{Dt} + \\rho\\operatorname{div}v$. Continuity ($=0$) with $\\rho > 0$ gives $\\frac{D\\rho}{Dt} = 0 \\iff \\operatorname{div}v = 0$ — incompressibility is equivalent to a divergence-free velocity field."
+      },
+      {
+        "id": "ps9-3i",
+        "label": "3i",
+        "type": "mc",
+        "prompt": "Flow (i): $v = t(-y,\\, x)$, $\\rho = \\dfrac{1}{x^2+y^2}$. Which description is right?",
+        "options": [
+          "Circular about the origin, speeding up with $t$; incompressible and stratified",
+          "Radial outward from the origin; incompressible but not stratified",
+          "Circular; not incompressible because $\\partial_t\\rho \\neq 0$",
+          "A steady circular flow; incompressible"
+        ],
+        "answer": 0,
+        "solution": "$\\operatorname{div}v = t(-\\partial_x y + \\partial_y x) = 0$, so the flow is incompressible; $v \\cdot \\nabla\\rho = 0$ since $\\nabla\\rho$ is radial while $v$ is tangent to circles, so it is stratified. Particles circulate faster as $t$ grows."
+      },
+      {
+        "id": "ps9-3ii",
+        "label": "3ii",
+        "type": "mc",
+        "prompt": "Flow (ii): $v = \\dfrac{1}{1+t}(x,\\, -y)$, $\\rho = \\dfrac{1}{xy}$. Which description is right?",
+        "options": [
+          "Hyperbolic flow lines $xy = $ const, slowing down with time; incompressible and stratified",
+          "Circular flow lines centered at the origin; incompressible",
+          "Hyperbolic flow lines; not incompressible because the speed depends on time",
+          "Straight lines through the origin; not stratified"
+        ],
+        "answer": 0,
+        "solution": "$\\operatorname{div}v = \\frac{1}{1+t}(1 - 1) = 0$ and $v \\cdot \\nabla\\rho = \\frac{1}{1+t}\\left(-\\frac{1}{xy} + \\frac{1}{xy}\\right) = 0$: incompressible and stratified. The paths satisfy $XY = xy$ — hyperbolas, exactly like pset 7 case C — and the factor $\\frac{1}{1+t}$ makes the flow slow down."
+      },
+      {
+        "id": "ps9-3iii",
+        "label": "3iii",
+        "type": "mc",
+        "prompt": "Flow (iii): $v = t(x,\\, y)$, $\\rho = e^{-t^2}$ still satisfies the continuity equation. Why is it *not* incompressible?",
+        "options": [
+          "$\\operatorname{div}v = 2t \\neq 0$ (for $t > 0$), so $\\frac{D\\rho}{Dt} = -\\rho\\operatorname{div}v \\neq 0$",
+          "Because $\\partial_t\\rho = -2te^{-t^2} \\neq 0$ instead",
+          "It is incompressible — continuity is satisfied",
+          "It is incompressible but not stratified"
+        ],
+        "answer": 0,
+        "solution": "$\\operatorname{div}v = t(1+1) = 2t$, and $\\frac{D\\rho}{Dt} = -\\rho\\operatorname{div}v = -2te^{-t^2} \\neq 0$: the density changes along the (radial outward, accelerating) flow paths, so this flow compresses/expands. Continuity holding does not by itself mean incompressible — you need $\\frac{D\\rho}{Dt} = 0$, equivalently $\\operatorname{div}v = 0$."
+      }
+    ]
   }
 }

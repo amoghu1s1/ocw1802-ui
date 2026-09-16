@@ -5211,8 +5211,13 @@
 							"pdfs": [
 								{
 									"kind": "problems",
-									"title": "Section 4 Part A: Supplemental Problem Set 10 (PDF)",
+									"title": "Section 4 Part A: Problem Set 10 (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/problem-set-10/problems.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Section 4 Part A: Supplemental Problem Set 10 (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/problem-set-10/problems-2.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5743,8 +5748,13 @@
 							"pdfs": [
 								{
 									"kind": "problems",
-									"title": "Section 4 Part B: Supplemental Problem Set 11 (PDF)",
+									"title": "Section 4 Part B: Problem Set 11 (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/problem-set-11/problems.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Section 4 Part B: Supplemental Problem Set 11 (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/problem-set-11/problems-2.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -6296,8 +6306,13 @@
 							"pdfs": [
 								{
 									"kind": "problems",
-									"title": "Section 4 Part B: Supplemental Problem Set 11 (PDF)",
+									"title": "Section 4 Part C: Problem Set 12 (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/problem-set-12/problems.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Section 4 Part C: Supplemental Problem Set 11 (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/problem-set-12/problems-2.pdf"
 								},
 								{
 									"kind": "solutions",
