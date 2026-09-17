@@ -595,6 +595,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-9-matrix-multiplication/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Matrix Multiplication (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-9-matrix-multiplication/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 9 Solutions: Matrix Multiplication (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-9-matrix-multiplication/solutions.pdf"
@@ -636,6 +641,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Meaning of Matrix Multiplication (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-10-meaning-of-matrix-multiplication/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 10 Solutions: Meaning of Matrix Multiplication (PDF)",
@@ -691,6 +701,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-11-matrix-inverses/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Matrix Inverses (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-11-matrix-inverses/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -758,6 +773,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-12-equations-of-planes-ii/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Equations of Planes (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-12-equations-of-planes-ii/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 12 Solutions: Equations of Planes II (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-12-equations-of-planes-ii/solutions.pdf"
@@ -811,6 +831,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-13-linear-systems-and-planes/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Geometry of Linear Systems (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-13-linear-systems-and-planes/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 13 Solutions: Linear Systems and Planes (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-13-linear-systems-and-planes/solutions.pdf"
@@ -860,6 +885,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-14-solutions-to-square-systems/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Solutions to Linear Systems (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-b-matrices-and-systems-of-equations/session-14-solutions-to-square-systems/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -962,6 +992,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-15-equations-of-lines/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Parametric Equations of Lines (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-15-equations-of-lines/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 15 Solutions: Equations of Lines (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-15-equations-of-lines/solutions.pdf"
@@ -1011,6 +1046,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-16-intersection-of-a-line-and-a-plane/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Intersection of a Line and a Plane (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-16-intersection-of-a-line-and-a-plane/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -1066,6 +1106,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Parametric Curves (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-17-general-parametric-equations-the-cycloid/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 17 Solutions: General Parametric Equations; the Cycloid (PDF)",
@@ -1164,6 +1209,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-19-velocity-and-acceleration/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Product Rule for Vector Derivatives (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-19-velocity-and-acceleration/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 19 Solutions: Velocity and Acceleration (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-19-velocity-and-acceleration/solutions.pdf"
@@ -1230,6 +1280,11 @@
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-20-velocity-and-arc-length/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Vector Derivatives and Arc Length (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-20-velocity-and-arc-length/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 20 Solutions: Velocity and Arc Length (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-20-velocity-and-arc-length/solutions.pdf"
@@ -1287,6 +1342,11 @@
 									"kind": "reading",
 									"title": "Session 21: Kepler's Second Law (PDF)",
 									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-21-keplers-second-law/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Vector Derivatives (PDF)",
+									"localPath": "/content/1.-vectors-and-matrices/part-c-parametric-equations-for-curves/session-21-keplers-second-law/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -1539,6 +1599,11 @@
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-24-functions-of-two-variables-graphs/reading-3.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Graphing a Function (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-24-functions-of-two-variables-graphs/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 24 Solutions: Functions of Two Variables: Graphs (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-24-functions-of-two-variables-graphs/solutions.pdf"
@@ -1593,6 +1658,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-25-level-curves-and-contour-plots/reading-2.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Contour Plots (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-25-level-curves-and-contour-plots/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -1660,6 +1730,11 @@
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-26-partial-derivatives/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Partial Derivatives (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-26-partial-derivatives/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 26 Solutions: Partial Derivatives (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-26-partial-derivatives/solutions.pdf"
@@ -1713,6 +1788,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-27-approximation-formula/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Tangent Approximation (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-27-approximation-formula/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -1852,6 +1932,11 @@
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-29-least-squares/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Least Squares (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-29-least-squares/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 29 Solutions: Least Squares (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-29-least-squares/solutions.pdf"
@@ -1961,6 +2046,11 @@
 									"kind": "reading",
 									"title": "Session 30: Second Derivative Test (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-30-second-derivative-test/reading-2.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Second Derivative Test (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-a-functions-of-two-variables-tangent-approximation-and-optimization/session-30-second-derivative-test/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -2101,6 +2191,11 @@
 							],
 							"pdfs": [
 								{
+									"kind": "problems",
+									"title": "Problems: Chain Rule and Total Differentials (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-32-total-differentials-and-the-chain-rule/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 32 Solutions: Total Differentials and the Chain Rule (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-32-total-differentials-and-the-chain-rule/solutions.pdf"
@@ -2154,6 +2249,11 @@
 									"kind": "exam-solutions",
 									"title": "Session 33 Solutions: Examples (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-33-examples/exam-solutions.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Chain Rule (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-33-examples/problems.pdf"
 								}
 							]
 						},
@@ -2200,6 +2300,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-34-the-chain-rule-with-more-variables/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Chain Rule Practice (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-34-the-chain-rule-with-more-variables/problems.pdf"
 								},
 								{
 									"kind": "practice-solutions",
@@ -2257,6 +2362,11 @@
 							],
 							"pdfs": [
 								{
+									"kind": "problems",
+									"title": "Problems: Elliptic Paraboloid (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 35 Solutions: Elliptic Paraboloid (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/solutions.pdf"
@@ -2308,6 +2418,11 @@
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-36-proof/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Gradient and Level Curves (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-36-proof/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 36 Solutions: Proof (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-36-proof/solutions.pdf"
@@ -2357,6 +2472,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-37-example/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Equation of a Tangent Plane (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-37-example/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -2429,6 +2549,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-38-directional-derivatives/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Directional Derivatives (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-38-directional-derivatives/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -2542,6 +2667,11 @@
 									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-39-statement-of-lagrange-multipliers-and-example/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Lagrange Multipliers (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-39-statement-of-lagrange-multipliers-and-example/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 39 Solutions: Lagrange Multipliers (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-39-statement-of-lagrange-multipliers-and-example/solutions.pdf"
@@ -2650,6 +2780,11 @@
 									"kind": "exam-solutions",
 									"title": "Session 41 Solutions: Advanced Example for Lagrange's Multipliers (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-41-advanced-example/exam-solutions.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Lagrange Multipliers (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-41-advanced-example/problems.pdf"
 								}
 							]
 						},
@@ -2691,6 +2826,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Non-independent Variables (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-42-constrained-differentials/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 42 Solutions: Non-independent Variables (PDF)",
@@ -2742,6 +2882,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-43-clearer-notation/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: The Chain Rule with Constraints (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-43-clearer-notation/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -2827,6 +2972,11 @@
 									"kind": "exam-solutions",
 									"title": "Session 44 Solutions: Example (PDF)",
 									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-44-example/exam-solutions.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Chain Rule with Constraint (PDF)",
+									"localPath": "/content/2.-partial-derivatives/part-c-lagrange-multipliers-and-constrained-differentials/session-44-example/problems.pdf"
 								}
 							]
 						},
@@ -3060,6 +3210,11 @@
 							],
 							"pdfs": [
 								{
+									"kind": "problems",
+									"title": "Problems: Setting Up Double Integrals (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-47-definition-of-double-integration/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 47 Solutions: Definition of Double Integration (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-47-definition-of-double-integration/solutions.pdf"
@@ -3133,6 +3288,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-48-examples-of-double-integration/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Regions of Integration (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-48-examples-of-double-integration/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 48 Solutions: Regions of Integration (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-48-examples-of-double-integration/solutions.pdf"
@@ -3183,6 +3343,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-49-exchanging-the-order-of-integration/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Exchanging the Order of Integration (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-49-exchanging-the-order-of-integration/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -3245,6 +3410,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-50-double-integrals-in-polar-coordinates/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Double Integration in Polar Coordinates (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-50-double-integrals-in-polar-coordinates/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 50 Solutions: Double Integrals in Polar Coordinates (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-50-double-integrals-in-polar-coordinates/solutions.pdf"
@@ -3290,6 +3460,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Mass and Average Value (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-51-applications-mass-and-average-value/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 51 Solutions: Mass and Average Value (PDF)",
@@ -3368,6 +3543,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-52-applications-moment-of-inertia/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Moment of Inertia (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-52-applications-moment-of-inertia/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 52 Solutions: Applications: Moment of Inertia (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-52-applications-moment-of-inertia/solutions.pdf"
@@ -3443,6 +3623,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-53-change-of-variables/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Change of Variables (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-53-change-of-variables/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 53 Solutions: Change of Variables (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-53-change-of-variables/solutions.pdf"
@@ -3493,6 +3678,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-54-example-polar-coordinates/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Polar Coordinates and the Jacobian (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-54-example-polar-coordinates/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -3559,6 +3749,11 @@
 									"kind": "exam-solutions",
 									"title": "Session 55 Solutions: Change of Variables Example (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-55-example/exam-solutions.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Change of Variables Example (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-a-double-integrals/session-55-example/problems.pdf"
 								}
 							]
 						},
@@ -3630,6 +3825,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Vector Fields (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-56-vector-fields/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 56 Solutions: Vector Fields (PDF)",
@@ -3708,6 +3908,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-57-work-and-line-integrals/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Work and Line Integrals (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-57-work-and-line-integrals/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 57 Solutions: Work and Line Integrals (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-57-work-and-line-integrals/solutions.pdf"
@@ -3769,6 +3974,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-58-geometric-approach/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Geometric Approach to Line Integrals (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-58-geometric-approach/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 58 Solutions: Geometric Approach to Line Integrals (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-58-geometric-approach/solutions.pdf"
@@ -3825,6 +4035,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Work Integrals (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-59-example-line-integrals-for-work/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 59 Solutions: Line Integrals for Work (PDF)",
@@ -3901,6 +4116,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-60-fundamental-theorem-for-line-integrals/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Fundamental Theorem for Line Integrals (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-60-fundamental-theorem-for-line-integrals/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -4015,6 +4235,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-62-gradient-fields/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Identifying Gradient Fields and Exact Differentials (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-62-gradient-fields/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 62 Solutions: Identifying Gradient Fields and Exact Differentials (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-62-gradient-fields/solutions.pdf"
@@ -4095,6 +4320,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-63-potential-functions/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Identifying Potential Functions (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-63-potential-functions/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 63 Solutions: Identifying Potential Functions (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-63-potential-functions/solutions.pdf"
@@ -4152,6 +4382,11 @@
 									"kind": "reading",
 									"title": "Session 64: Curl (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-64-curl/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Two Dimensional Curl (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-b-vector-fields-and-line-integrals/session-64-curl/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -4256,6 +4491,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-65-greens-theorem/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Green&rsquo;s Theorem (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-65-greens-theorem/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 65 Solutions: Using Green's Theorem (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-65-greens-theorem/solutions.pdf"
@@ -4305,6 +4545,11 @@
 									"kind": "reading",
 									"title": "Session 66: Curl(F) = 0 Implies Conservative (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-66-curl-f-equals-0-implies-conservative/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Identifying Gradient Fields and Exact Differentials (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-66-curl-f-equals-0-implies-conservative/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -4408,6 +4653,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-68-planimeter-greens-theorem-and-area/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Green&rsquo;s Theorem and Area (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-68-planimeter-greens-theorem-and-area/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 68 Solutions: Green's Theorem and Area (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-68-planimeter-greens-theorem-and-area/solutions.pdf"
@@ -4502,6 +4752,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-69-flux-in-2d/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Flux Across Curves (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-69-flux-in-2d/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 69 Solutions: Flux Across Curves (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-69-flux-in-2d/solutions.pdf"
@@ -4570,6 +4825,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-70-normal-form-of-greens-theorem/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Normal Form of Green&rsquo;s Theorem (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-70-normal-form-of-greens-theorem/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 70 Solutions: Normal Form of Green's Theorem (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-70-normal-form-of-greens-theorem/solutions.pdf"
@@ -4631,6 +4891,11 @@
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-71-extended-greens-theorem-boundaries-with-multiple-pieces/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Extended Green&rsquo;s Theorem (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-71-extended-greens-theorem-boundaries-with-multiple-pieces/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 71 Solutions: Extended Green's Theorem (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-71-extended-greens-theorem-boundaries-with-multiple-pieces/solutions.pdf"
@@ -4686,6 +4951,11 @@
 									"kind": "reading",
 									"title": "Session 72: Simply Connected Regions and Conservative Fields (PDF)",
 									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-72-simply-connected-regions-and-conservative-fields/reading-2.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Simply Connected Regions and Conservative Fields (PDF)",
+									"localPath": "/content/3.-double-integrals-and-line-integrals-in-the-plane/part-c-greens-theorem/session-72-simply-connected-regions-and-conservative-fields/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -4920,6 +5190,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-74-triple-integrals-rectangular-and-cylindrical-coordinates/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Triple Integrals (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-74-triple-integrals-rectangular-and-cylindrical-coordinates/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 74 Solutions: Triple Integrals (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-74-triple-integrals-rectangular-and-cylindrical-coordinates/solutions.pdf"
@@ -5001,6 +5276,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-75-applications-and-examples/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Practice with Triple Integrals (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-75-applications-and-examples/problems.pdf"
+								},
+								{
 									"kind": "practice-solutions",
 									"title": "Session 75 Solutions: Practice with Triple Integrals (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-75-applications-and-examples/practice-solutions.pdf"
@@ -5049,6 +5329,11 @@
 									"kind": "reading",
 									"title": "Session 76: Spherical Coordinates (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-76-spherical-coordinates/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Limits in Spherical Coordinates (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-76-spherical-coordinates/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5119,6 +5404,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-77-triple-integrals-in-spherical-coordinates/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Spherical Coordinates (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-77-triple-integrals-in-spherical-coordinates/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 77 Solutions: Spherical Coordinates (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-77-triple-integrals-in-spherical-coordinates/solutions.pdf"
@@ -5186,6 +5476,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-78-applications-gravitational-attraction/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Applications of Spherical Coordinates (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-a-triple-integrals/session-78-applications-gravitational-attraction/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5268,6 +5563,11 @@
 							],
 							"pdfs": [
 								{
+									"kind": "problems",
+									"title": "Problems: Vector Fields in Space (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-79-vector-fields-in-space/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 79 Solutions: Vector Fields in Space (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-79-vector-fields-in-space/solutions.pdf"
@@ -5331,6 +5631,11 @@
 									"kind": "reading",
 									"title": "Session 80: Flux Through a Surface (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-80-flux-through-a-surface/reading-2.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Calculating Flux (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-80-flux-through-a-surface/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5401,6 +5706,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-81-calculating-flux-finding-nds/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Flux Through Surfaces (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-81-calculating-flux-finding-nds/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 81 Solutions: Flux Through Surfaces (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-81-calculating-flux-finding-nds/solutions.pdf"
@@ -5460,6 +5770,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-82-nds-for-a-surface-z-f-x-y/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Flux Through General Surfaces (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-82-nds-for-a-surface-z-f-x-y/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 82 Solutions: Flux Through General Surfaces (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-82-nds-for-a-surface-z-f-x-y/solutions.pdf"
@@ -5508,6 +5823,11 @@
 								}
 							],
 							"pdfs": [
+								{
+									"kind": "problems",
+									"title": "Problems: Flux Through a Paraboloid (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-83-other-ways-to-find-nds/problems.pdf"
+								},
 								{
 									"kind": "solutions",
 									"title": "Session 83 Solutions: Flux Through a Paraboloid (PDF)",
@@ -5571,6 +5891,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-84-divergence-theorem/reading-3.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Divergence Theorem (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-84-divergence-theorem/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 84 Solutions: Divergence Theorem (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-84-divergence-theorem/solutions.pdf"
@@ -5625,6 +5950,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-85-physical-meaning-of-flux-del-notation/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Del Notation; Flux (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-85-physical-meaning-of-flux-del-notation/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5728,6 +6058,11 @@
 									"kind": "reading",
 									"title": "Session 87: Diffusion Equation (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-87-diffusion-equation/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Harmonic Functions and Averages (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-b-flux-and-the-divergence-theorem/session-87-diffusion-equation/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5836,6 +6171,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-88-line-integrals-in-space/reading-2.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Work Along a Space Curve (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-88-line-integrals-in-space/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 88 Solutions: Work Along a Space Curve (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-88-line-integrals-in-space/solutions.pdf"
@@ -5896,6 +6236,11 @@
 									"kind": "reading",
 									"title": "Session 89: Gradient Fields and Potential Functions (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-89-gradient-fields-and-potential-functions/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Gradient Fields and Potential Functions (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-89-gradient-fields-and-potential-functions/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -5961,6 +6306,11 @@
 									"kind": "reading",
 									"title": "Session 90: Curl in 3D (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-90-curl-in-3d/reading-3.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Curl in 3D (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-90-curl-in-3d/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -6038,6 +6388,11 @@
 									"kind": "reading",
 									"title": "Session 91: Stokes' Theorem (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-91-stokes-theorem/reading-2.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Stokes&rsquo; Theorem (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-91-stokes-theorem/problems.pdf"
 								},
 								{
 									"kind": "solutions",
@@ -6120,6 +6475,11 @@
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-93-example/reading-1.pdf"
 								},
 								{
+									"kind": "problems",
+									"title": "Problems: Extended Stokes&rsquo; Theorem (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-93-example/problems.pdf"
+								},
+								{
 									"kind": "solutions",
 									"title": "Session 93 Solutions: Extended Stokes' Theorem (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-93-example/solutions.pdf"
@@ -6197,6 +6557,11 @@
 									"kind": "reading",
 									"title": "Session 94: Simply Connected Regions; Topology (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-94-simply-connected-regions-topology/reading-4.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Simply Connected Regions (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-94-simply-connected-regions-topology/problems.pdf"
 								}
 							]
 						},
@@ -6243,6 +6608,11 @@
 									"kind": "reading",
 									"title": "English (PDF)",
 									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-95-stokes-theorem-and-surface-independence/reading-1.pdf"
+								},
+								{
+									"kind": "problems",
+									"title": "Problems: Surface Independence (PDF)",
+									"localPath": "/content/4.-triple-integrals-and-surface-integrals-in-3-space/part-c-line-integrals-and-stokes-theorem/session-95-stokes-theorem-and-surface-independence/problems.pdf"
 								},
 								{
 									"kind": "solutions",

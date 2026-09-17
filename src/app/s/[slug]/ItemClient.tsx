@@ -42,6 +42,7 @@ export default function ItemClient({ slug }: { slug: string }) {
   const [recSeek, setRecSeek] = useState<{ clipIdx: number; t: number; seq: number } | null>(null);
   const [showLectureTx, setShowLectureTx] = useState(false);
   const [showRecTx, setShowRecTx] = useState(false);
+  const [recLoaded, setRecLoaded] = useState(false);
   const deepApplied = useRef(false);
 
   const clips: Clip[] = useMemo(() => (data ? data.entry.clips.map((c) => ({ ...c })) : []), [data]);
@@ -168,17 +169,38 @@ export default function ItemClient({ slug }: { slug: string }) {
       done: recitationDone,
       body: (
         <div className="space-y-3 min-w-0">
-          <YouTubePlaylist
-            slug={slug}
-            clips={[recitation]}
-            bookmarks={bookmarks}
-            onAddBookmark={(bm) => addBookmark(slug, bm)}
-            onRemoveBookmark={(ts) => removeBookmark(slug, ts)}
-            onTimeUpdate={(_, t) => setRecPos(t)}
-            onSeekRequest={(_, t) => setRecSeek({ clipIdx: 0, t, seq: Date.now() })}
-            seekTo={recSeek}
-          />
-          {recLines.length > 0 && (
+          {recLoaded ? (
+            <YouTubePlaylist
+              slug={slug}
+              clips={[recitation]}
+              bookmarks={bookmarks}
+              onAddBookmark={(bm) => addBookmark(slug, bm)}
+              onRemoveBookmark={(ts) => removeBookmark(slug, ts)}
+              onTimeUpdate={(_, t) => setRecPos(t)}
+              onSeekRequest={(_, t) => setRecSeek({ clipIdx: 0, t, seq: Date.now() })}
+              seekTo={recSeek}
+              autoPlay
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setRecLoaded(true)}
+              className="group relative w-full aspect-video rounded-[10px] border border-border/70 overflow-hidden bg-surface-2/40 cursor-pointer"
+              aria-label="Load the recitation video"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://i.ytimg.com/vi/${recitation.ytId}/hqdefault.jpg`}
+                alt=""
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity"
+              />
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="px-3 py-1.5 rounded-[6px] bg-black/70 border border-white/10 text-xs text-white/90">Play recitation video</span>
+              </span>
+            </button>
+          )}
+          {recLoaded && recLines.length > 0 && (
             <TranscriptToggle open={showRecTx} onToggle={() => setShowRecTx((v) => !v)} label="recitation transcript">
               <TranscriptPanel lines={recLines} currentTime={recPos} onSeek={(t) => setRecSeek({ clipIdx: 0, t, seq: Date.now() })} />
             </TranscriptToggle>
@@ -192,9 +214,9 @@ export default function ItemClient({ slug }: { slug: string }) {
     steps.push({
       id: "practice",
       title: "Work the problems",
-      meta: quiz ? `${quizCorrect} of ${quiz.problems.length} correct` : `${practiceDocs.length} ${practiceDocs.length === 1 ? "PDF" : "PDFs"}`,
+      meta: quiz ? `${quizCorrect} of ${quiz.problems.length} correct` : practiceMeta(practiceDocs),
       done: quiz ? quizDone : undefined,
-      body: <ProblemsTab slug={slug} problemPdf={problemPdf} solutionsPdf={solutionsPdf} quiz={quiz} pdfs={practiceDocs} />,
+      body: <PracticeTabs slug={slug} quiz={quiz} pdfs={practiceDocs} />,
     });
   }
 
@@ -291,36 +313,71 @@ export default function ItemClient({ slug }: { slug: string }) {
   );
 }
 
-function ProblemsTab({
-  slug,
-  problemPdf,
-  solutionsPdf,
-  quiz,
-  pdfs,
-}: {
-  slug: string;
-  problemPdf: string | null;
-  solutionsPdf: string | null;
-  quiz: Quiz | null;
-  pdfs: PdfRef[];
-}) {
-  const [mode, setMode] = useState<"problems" | "solutions">("problems");
-  const url = (mode === "solutions" && solutionsPdf ? solutionsPdf : problemPdf) ?? null;
+function practiceMeta(pdfs: PdfRef[]): string {
+  const hasProblems = pdfs.some((p) => p.kind === "problems");
+  const hasSolutions = pdfs.some((p) => p.kind === "solutions" || p.kind === "practice-solutions");
+  if (hasProblems && hasSolutions) return "Problems and solutions";
+  if (hasProblems) return "Problems";
+  if (hasSolutions) return "Solutions";
+  return `${pdfs.length} ${pdfs.length === 1 ? "PDF" : "PDFs"}`;
+}
+
+/** Two separate tabs: the problems PDF only, or the solutions PDF only. */
+function PracticeTabs({ slug, quiz, pdfs }: { slug: string; quiz: Quiz | null; pdfs: PdfRef[] }) {
+  const problems = pdfs.filter((p) => p.kind === "problems");
+  const solutions = pdfs.filter((p) => p.kind === "solutions" || p.kind === "practice-solutions");
+  const tabs = [
+    ...(problems.length ? [{ id: "problems", label: "Problems", docs: problems }] : []),
+    ...(solutions.length ? [{ id: "solutions", label: "Solutions", docs: solutions }] : []),
+  ];
+  const [tab, setTab] = useState(tabs[0]?.id ?? "");
+  const [docIdx, setDocIdx] = useState(0);
+  const active = tabs.find((t) => t.id === tab) ?? tabs[0];
+  const doc = active?.docs[Math.min(docIdx, active.docs.length - 1)];
+
   return (
     <div className="space-y-3 min-w-0">
-      {quiz && <QuizPanel slug={slug} problems={quiz.problems} problemPdf={problemPdf} solutionsPdf={solutionsPdf} layout={problemPdf || solutionsPdf ? "narrow" : "wide"} />}
-      {solutionsPdf && problemPdf && (
-        <div className="flex items-center gap-1">
-          <ToneButton active={mode === "problems"} onClick={() => setMode("problems")}>
-            Problems
-          </ToneButton>
-          <ToneButton active={mode === "solutions"} onClick={() => setMode("solutions")}>
-            Solutions
-          </ToneButton>
+      {quiz && (
+        <QuizPanel
+          slug={slug}
+          problems={quiz.problems}
+          problemPdf={problems[0]?.localPath ?? null}
+          solutionsPdf={solutions[0]?.localPath ?? null}
+          layout={tabs.length ? "narrow" : "wide"}
+        />
+      )}
+      {tabs.length === 0 && <p className="text-xs text-text-faint">No PDF for this page.</p>}
+      {tabs.length > 0 && (
+        <div className="flex items-center gap-1 flex-wrap">
+          {tabs.map((t) => (
+            <ToneButton
+              key={t.id}
+              active={t.id === active.id}
+              onClick={() => {
+                setTab(t.id);
+                setDocIdx(0);
+              }}
+            >
+              {t.label}
+            </ToneButton>
+          ))}
+          {active.docs.length > 1 && (
+            <span className="flex items-center gap-1 ml-2 flex-wrap">
+              {active.docs.map((d, i) => (
+                <button
+                  key={d.localPath}
+                  type="button"
+                  onClick={() => setDocIdx(i)}
+                  className={`text-[11px] transition-colors ${i === docIdx ? "text-text" : "text-text-faint hover:text-text-dim"}`}
+                >
+                  {d.title.replace(/\s*\(PDF\)\s*$/i, "")}
+                </button>
+              ))}
+            </span>
+          )}
         </div>
       )}
-      {url && <PdfViewer url={url} heightClass="h-[440px]" />}
-      {!url && pdfs.length > 0 && <PdfTab pdfs={pdfs} />}
+      {doc && <PdfViewer key={doc.localPath} url={doc.localPath} heightClass="h-[440px]" />}
     </div>
   );
 }

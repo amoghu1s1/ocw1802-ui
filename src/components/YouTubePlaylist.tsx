@@ -15,6 +15,8 @@ interface YouTubePlaylistProps {
   onSeekRequest: (clipIdx: number, t: number) => void;
   onTimeUpdate: (clipIdx: number, timeSec: number) => void;
   seekTo: { clipIdx: number; t: number; seq: number } | null;
+  /** Start playing as soon as the player is ready (used after an explicit user action). */
+  autoPlay?: boolean;
 }
 
 type YTPlayer = {
@@ -26,6 +28,9 @@ type YTPlayer = {
   destroy: () => void;
 };
 
+/* Only one video ever plays at a time across all players on the page. */
+const livePlayers = new Set<YTPlayer>();
+
 declare global {
   interface Window {
     YT: any;
@@ -33,7 +38,7 @@ declare global {
   }
 }
 
-export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekRequest, onTimeUpdate, seekTo }: YouTubePlaylistProps) {
+export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekRequest, onTimeUpdate, seekTo, autoPlay = false }: YouTubePlaylistProps) {
   const [idx, setIdx] = useState(0);
   const [time, setTime] = useState(0);
   const [dur, setDur] = useState<number | null>(null);
@@ -44,8 +49,21 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const idxRef = useRef(0);
   const clipsRef = useRef(clips);
+  const autoPlayRef = useRef(autoPlay);
   idxRef.current = idx;
   clipsRef.current = clips;
+  autoPlayRef.current = autoPlay;
+
+  /* pause every other player on the page */
+  const pauseOthers = useCallback(() => {
+    const me = playerRef.current;
+    for (const other of livePlayers) {
+      if (other === me) continue;
+      try {
+        other.pauseVideo();
+      } catch {}
+    }
+  }, []);
 
   const clip = clips[idx];
   const clipEnd = clip && clip.end > clip.start ? clip.end : null;
@@ -118,6 +136,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
             rel: 0,
             enablejsapi: 1,
             origin: window.location.origin,
+            start: Math.max(0, Math.floor(clip.start)),
           },
           events: {
             onReady: (e: unknown) => {
@@ -125,8 +144,12 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
               readyRef.current = true;
               const p = (e as { target: YTPlayer }).target;
               try {
-                p.seekTo(clip.start, true);
+                /* start= above already positions the clip; only seek if it was ignored */
+                const t = typeof p.getCurrentTime === "function" ? p.getCurrentTime() : 0;
+                if (clip.start > 0 && Math.abs(t - clip.start) > 2) p.seekTo(clip.start, true);
                 setDur(p.getDuration() || null);
+                livePlayers.add(p);
+                if (autoPlayRef.current) p.playVideo();
               } catch {}
               setError(null);
             },
@@ -137,6 +160,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
               if (!mounted) return;
               const s = (e as { data: number }).data;
               if (s === 1) {
+                pauseOthers();
                 if (!intervalRef.current) intervalRef.current = setInterval(tick, 500);
               } else {
                 if (intervalRef.current) {
@@ -148,6 +172,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
             },
           },
         });
+        if (playerRef.current) livePlayers.add(playerRef.current);
       } catch (err) {
         setError((err as Error).message);
       }
@@ -162,6 +187,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
         intervalRef.current = null;
       }
       if (playerRef.current) {
+        livePlayers.delete(playerRef.current);
         try {
           playerRef.current.destroy();
         } catch {}
@@ -206,6 +232,7 @@ export function YouTubePlaylist({ slug, clips, bookmarks, onAddBookmark, onSeekR
     const c = clips[idx];
     const abs = c && c.end > c.start ? c.start + seekTo.t : seekTo.t;
     try {
+      pauseOthers();
       playerRef.current.seekTo(abs, true);
       playerRef.current.playVideo();
     } catch {}
